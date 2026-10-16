@@ -1,0 +1,25 @@
+<!doctype html>
+<html lang="es">
+<head><meta charset="utf-8"><title>Hoja de contacto</title></head>
+<body style="background:#111;color:#eee;font:14px sans-serif">
+<p id="log">armando…</p>
+<script type="module">
+// Hoja de contacto de las imágenes de las slides (herramienta de revisión, solo con GALERAS_DEV=1)
+const names = new URLSearchParams(location.search).get('n').split(',');
+const W = 300, H = 300, cols = 6, rows = Math.ceil(names.length / cols);
+const c = document.createElement('canvas'); c.width = cols * W; c.height = rows * (H + 24);
+const x = c.getContext('2d'); x.fillStyle = '#111'; x.fillRect(0, 0, c.width, c.height);
+await Promise.all(names.map((n, k) => new Promise(res => {
+  const im = new Image(); im.onload = () => {
+    const s = Math.min(W / im.width, H / im.height), w = im.width * s, h = im.height * s;
+    const cx = (k % cols) * W, cy = Math.floor(k / cols) * (H + 24);
+    x.drawImage(im, cx + (W - w) / 2, cy + (H - h) / 2, w, h);
+    x.fillStyle = '#ffd36a'; x.font = '16px sans-serif'; x.fillText(n, cx + 6, cy + H + 18); res();
+  }; im.onerror = res; im.src = `../assets/img/${n}.jpg`;
+})));
+const r = await fetch('/__guardar?nombre=zz-contacto', { method: 'POST', body: c.toDataURL('image/jpeg', 0.82) });
+document.getElementById('log').textContent = r.ok ? 'listo' : 'error';
+window.done = true;
+</script>
+</body>
+</html>

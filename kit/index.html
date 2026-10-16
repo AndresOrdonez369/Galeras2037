@@ -1,0 +1,309 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Kit imprimible · Galeras 2037</title>
+<meta name="description" content="Todas las hojas y tarjetas del taller Galeras 2037, listas para imprimir.">
+<link rel="stylesheet" href="../assets/css/base.css">
+<style>
+  :root { --tinta: #141312; --gris: #8a857c; --linea: #b9b3a6; --papel: #fffdf7; }
+  body { background: #2b2825; color: var(--tinta); font-family: var(--f-body); margin: 0; }
+  .barra { position: sticky; top: 0; z-index: 5; display: flex; flex-wrap: wrap; gap: 12px; align-items: center; padding: 12px 20px; background: #141312; color: #ede8dc; }
+  .barra b { font-family: var(--f-display); font-weight: 400; color: #f2c230; font-size: 20px; margin-right: auto; }
+  .barra button { font: 700 15px var(--f-body); padding: 10px 16px; border: 0; background: #f26b1d; color: #fff; cursor: pointer; }
+  .barra a { color: #ede8dc; }
+  .hoja { width: 210mm; min-height: 297mm; margin: 18px auto; padding: 12mm; box-sizing: border-box; background: var(--papel); box-shadow: 0 10px 30px rgba(0,0,0,.4); position: relative; }
+  .hoja--a3 { width: 420mm; min-height: 297mm; }
+  .hoja--h { width: 297mm; min-height: 210mm; }
+  h1, h2, h3 { font-family: var(--f-display); font-weight: 400; margin: 0; line-height: 1.05; }
+  h1 { font-size: 30pt; }
+  h2 { font-size: 22pt; margin-bottom: 4mm; }
+  h3 { font-size: 13pt; margin: 5mm 0 2mm; }
+  .k { font-family: var(--f-led); font-weight: 900; font-size: 9pt; letter-spacing: .1em; text-transform: uppercase; color: #1f5fa8; margin: 0 0 2mm; }
+  p, li, td, th { font-size: 11pt; line-height: 1.4; }
+  .ej { color: var(--gris); font-style: italic; }
+  .linea { border-bottom: 1.2px solid var(--linea); height: 9mm; }
+  .caja { border: 1.5px solid var(--tinta); padding: 4mm; margin: 0 0 4mm; }
+  .caja h3 { margin-top: 0; }
+  .pie { position: absolute; left: 12mm; right: 12mm; bottom: 7mm; display: flex; justify-content: space-between; font-size: 8pt; color: var(--gris); }
+  .grid2 { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .grid3 { display: grid; grid-template-columns: repeat(3, 1fr); gap: 4mm; }
+  table { width: 100%; border-collapse: collapse; }
+  th, td { border: 1px solid var(--tinta); padding: 2.5mm; text-align: left; vertical-align: top; }
+  th { background: #ede8dc; font-family: var(--f-display); font-weight: 400; font-size: 10.5pt; }
+  .frase { font-size: 15pt; line-height: 2.1; }
+  .frase u { text-decoration: none; display: inline-block; min-width: 55mm; border-bottom: 1.5px solid var(--tinta); }
+  /* cortables */
+  .corte { border: 1.2px dashed var(--gris); }
+  .cartas { display: grid; grid-template-columns: repeat(3, 63mm); grid-auto-rows: 88mm; gap: 3mm; justify-content: center; }
+  .carta { box-sizing: border-box; padding: 5mm; display: grid; grid-template-rows: auto 1fr auto; border-radius: 3mm; }
+  .carta b { font-family: var(--f-display); font-weight: 400; font-size: 17pt; line-height: 1.05; align-self: center; }
+  .carta span { font-family: var(--f-led); font-weight: 900; font-size: 8pt; letter-spacing: .1em; text-transform: uppercase; }
+  .carta em { font-style: normal; font-size: 9.5pt; line-height: 1.3; }
+  .carta--fuerza { background: #f26b1d; color: #fff; }
+  .carta--tec { background: #1f5fa8; color: #fff; }
+  .carta--perdida { background: #fffdf7; color: #c8261e; border: 2px solid #c8261e; }
+  .roles { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .rol { padding: 5mm; min-height: 82mm; box-sizing: border-box; border-top: 8mm solid var(--c); }
+  .rol h3 { margin: 0 0 2mm; font-size: 18pt; }
+  .rol ul { margin: 2mm 0; padding-left: 5mm; }
+  .rol p { margin: 2mm 0 0; font-weight: 700; }
+  .semaforo { display: grid; gap: 5mm; }
+  .sem { height: 80mm; display: grid; place-items: center; text-align: center; color: #fff; border-radius: 4mm; }
+  .sem b { font-family: var(--f-display); font-weight: 400; font-size: 38pt; display: block; }
+  .sem span { font-size: 16pt; font-weight: 700; }
+  .pasaportes { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .pasaporte { padding: 5mm; min-height: 132mm; box-sizing: border-box; display: grid; gap: 2mm; align-content: start; }
+  .sellos { display: grid; grid-template-columns: repeat(4, 1fr); gap: 2mm; margin-top: 2mm; }
+  .sellos div { aspect-ratio: 1; border: 1.2px solid var(--tinta); border-radius: 50%; display: grid; place-items: center; text-align: center; font-size: 7.5pt; font-weight: 700; padding: 1mm; }
+  .glosarios { display: grid; grid-template-columns: 1fr 1fr; gap: 4mm; }
+  .glosario { padding: 4mm; min-height: 132mm; box-sizing: border-box; }
+  .glosario dl { margin: 2mm 0 0; display: grid; gap: 1.4mm; }
+  .glosario dt { font-family: var(--f-display); font-size: 10pt; }
+  .glosario dd { margin: 0 0 0 0; font-size: 8.6pt; line-height: 1.25; }
+  .glosario dd i { color: #c8261e; font-style: normal; font-weight: 700; }
+  /* plano A3 */
+  .plano { display: grid; grid-template-columns: 1fr 78mm; gap: 6mm; height: 273mm; }
+  .plano__hoja { position: relative; border: 2px solid var(--tinta);
+    background-image: linear-gradient(rgba(31,95,168,.25) 1px, transparent 1px), linear-gradient(90deg, rgba(31,95,168,.25) 1px, transparent 1px); background-size: 10mm 10mm; }
+  .marca { position: absolute; width: 14mm; height: 14mm; background: var(--tinta); }
+  .marca::after { content: ""; position: absolute; inset: 4mm; background: var(--papel); }
+  .marca--a { left: 4mm; top: 4mm; } .marca--b { right: 4mm; top: 4mm; } .marca--c { left: 4mm; bottom: 4mm; } .marca--d { right: 4mm; bottom: 4mm; }
+  .leyenda li { display: flex; align-items: center; gap: 3mm; margin: 0 0 2.4mm; font-size: 10.5pt; }
+  .leyenda { list-style: none; padding: 0; margin: 0; }
+  .dot { width: 7mm; height: 7mm; border-radius: 50%; flex: none; border: 1px solid var(--tinta); }
+  .tri { width: 0; height: 0; border-left: 4mm solid transparent; border-right: 4mm solid transparent; border-bottom: 7mm solid var(--tinta); flex: none; }
+  /* storyboard */
+  .story { display: grid; grid-template-columns: repeat(3, 1fr); gap: 5mm; }
+  .vineta { display: grid; gap: 1.5mm; }
+  .vineta .marco { aspect-ratio: 16 / 9; border: 1.8px solid var(--tinta); position: relative; }
+  .vineta .marco::before { content: attr(data-n); position: absolute; left: 0; top: 0; background: var(--tinta); color: #fff; font-family: var(--f-display); padding: 1mm 2.5mm; font-size: 10pt; }
+  .vineta .campo { display: grid; grid-template-columns: 22mm 1fr; font-size: 9pt; border-bottom: 1px solid var(--linea); padding: 1mm 0; }
+  .vineta .campo b { font-weight: 700; }
+  .tabla-impresion td:nth-child(2), .tabla-impresion td:nth-child(3) { white-space: nowrap; }
+  @media print {
+    body { background: #fff; }
+    .barra { display: none; }
+    .hoja { margin: 0; box-shadow: none; page-break-after: always; break-after: page; }
+    .hoja--a3 { page: a3; }
+    .hoja--h { page: horizontal; }
+    @page { size: A4; margin: 0; }
+    @page a3 { size: A3 landscape; margin: 0; }
+    @page horizontal { size: A4 landscape; margin: 0; }
+    * { -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  }
+  @media (max-width: 860px) { .hoja, .hoja--a3, .hoja--h { width: auto; min-height: 0; margin: 10px; } .plano { height: auto; grid-template-columns: 1fr; } .plano__hoja { min-height: 160mm; } }
+</style>
+</head>
+<body>
+<div class="barra"><b>Kit imprimible · Galeras 2037</b><span>Imprime todo o elige hojas en el diálogo de impresión (las páginas están numeradas).</span><button type="button" onclick="print()">Imprimir / guardar PDF</button><a href="../">Volver a la web</a></div>
+
+<!-- 0 · Portada e instrucciones de impresión -->
+<section class="hoja">
+  <p class="k">FICPA 2026 · Ciclo de Talleres Nuestro Talento</p>
+  <h1>Kit del taller<br>Galeras 2037</h1>
+  <p style="font-size:13pt;margin:4mm 0 8mm">Todo lo que va sobre las mesas. Cada hoja trae un ejemplo en gris (la Célula 0) para que nadie empiece en blanco.</p>
+  <h3>Qué imprimir (para 15 personas en 3 células)</h3>
+  <table class="tabla-impresion">
+    <tr><th>Hoja</th><th>Copias</th><th>Papel</th><th>Se usa en</th></tr>
+    <tr><td>1 · Pasaporte 2037 (4 por hoja, recortar)</td><td>4 hojas</td><td>Cartulina A4</td><td>Zona 0: llegada</td></tr>
+    <tr><td>2 · Tarjetas de rol (5 por hoja)</td><td>3 hojas</td><td>Cartulina A4</td><td>Zona 1</td></tr>
+    <tr><td>3 · Semáforo del Galeras (3 por hoja)</td><td>3 hojas</td><td>Cartulina A4, a color</td><td>Todo el taller</td></tr>
+    <tr><td>4 y 5 · Mazo del Mundo (15 cartas)</td><td>1 juego (2 hojas)</td><td>Cartulina A4, a color</td><td>Zona 3</td></tr>
+    <tr><td>6 · Ficha de Experiencia</td><td>4</td><td>Bond A4</td><td>Zona 2</td></tr>
+    <tr><td>7 · Constitución del Mundo</td><td>4</td><td>Bond A4</td><td>Zona 3</td></tr>
+    <tr><td>8 · Plano de Nivel</td><td>7</td><td>Bond A3</td><td>Zonas 4 y 5 (versión 1 y 2) + 1 tuyo</td></tr>
+    <tr><td>9 · Hoja de Playtest</td><td>4</td><td>Bond A4</td><td>Zona 5</td></tr>
+    <tr><td>10 · Storyboard de 6 viñetas</td><td>6</td><td>Bond A4 horizontal</td><td>Zona 6</td></tr>
+    <tr><td>11 · Pitch de 2 minutos</td><td>4</td><td>Bond A4</td><td>Zona 7</td></tr>
+    <tr><td>12 · Glosario de bolsillo (4 por hoja)</td><td>4 hojas</td><td>Bond A4</td><td>Para llevar</td></tr>
+  </table>
+  <p style="margin-top:6mm"><b>Consejo:</b> imprime el Plano de Nivel en A3 de verdad. Las 4 marcas negras de las esquinas no se recortan: son las que lee el escáner.</p>
+  <div class="pie"><span>Kit · Galeras 2037</span><span>0</span></div>
+</section>
+
+<!-- 1 · Pasaporte -->
+<section class="hoja">
+  <p class="k">Hoja 1 · Recortar por la línea</p>
+  <div class="pasaportes" id="pasaportes"></div>
+  <div class="pie"><span>Pasaporte 2037</span><span>1</span></div>
+</section>
+
+<!-- 2 · Roles -->
+<section class="hoja">
+  <p class="k">Hoja 2 · Tarjetas de rol · Los roles rotan en cada zona</p>
+  <div class="roles">
+    <div class="rol corte" style="--c:#f26b1d"><h3>Dirección</h3><ul><li>Cuida la visión: la frase de experiencia.</li><li>Decide cuando hay empate.</li></ul><p>Tu pregunta: «¿Esto sirve a lo que queremos que sientan?»</p></div>
+    <div class="rol corte" style="--c:#1f5fa8"><h3>Game design</h3><ul><li>Cuida las reglas, el verbo y la decisión.</li><li>Pregunta qué cuesta cada opción.</li></ul><p>Tu pregunta: «¿Qué hace el público y qué le cuesta?»</p></div>
+    <div class="rol corte" style="--c:#2e8b57"><h3>Level design</h3><ul><li>Dibuja el plano: muros, rutas, pistas.</li><li>Cuida el hito y la salida.</li></ul><p>Tu pregunta: «¿Se entiende sin explicarlo?»</p></div>
+    <div class="rol corte" style="--c:#f2c230"><h3>Producción</h3><ul><li>Lleva el tiempo de la misión.</li><li>Consigue materiales y celulares.</li></ul><p>Tu pregunta: «¿Cabe en el tiempo que tenemos?»</p></div>
+    <div class="rol corte" style="--c:#c8261e"><h3>Curaduría</h3><ul><li>Hace las preguntas incómodas.</li><li>Cuida que Pasto no sea decorado.</li></ul><p>Tu pregunta: «¿Esto solo podría pasar en Pasto?»</p></div>
+    <div class="rol corte" style="--c:#141312"><h3>Cómo rotar</h3><ul><li>Zona 2: quien dirige, escribe.</li><li>Zona 4: quien dirigía, dibuja.</li><li>Zona 6: quien producía, filma.</li></ul><p>Cada persona prueba al menos dos roles.</p></div>
+  </div>
+  <div class="pie"><span>Roles</span><span>2</span></div>
+</section>
+
+<!-- 3 · Semáforo -->
+<section class="hoja">
+  <p class="k">Hoja 3 · Semáforo del Galeras · Una hoja por célula</p>
+  <div class="semaforo">
+    <div class="sem corte" style="background:#2e8b57"><div><b>VERDE</b><span>Vamos bien</span></div></div>
+    <div class="sem corte" style="background:#f2c230;color:#141312"><div><b>AMARILLO</b><span>Tenemos una duda</span></div></div>
+    <div class="sem corte" style="background:#c8261e"><div><b>ROJO</b><span>Estamos bloqueados</span></div></div>
+  </div>
+  <div class="pie"><span>Semáforo del Galeras · los mismos niveles de alerta del volcán</span><span>3</span></div>
+</section>
+
+<!-- 4-5 · Mazo del Mundo -->
+<section class="hoja">
+  <p class="k">Hoja 4 · Mazo del Mundo · Fuerzas territoriales y tecnologías</p>
+  <div class="cartas" id="mazo-a"></div>
+  <div class="pie"><span>Mazo del Mundo (1/2)</span><span>4</span></div>
+</section>
+<section class="hoja">
+  <p class="k">Hoja 5 · Mazo del Mundo · Pérdidas y reverso</p>
+  <div class="cartas" id="mazo-b"></div>
+  <div class="pie"><span>Mazo del Mundo (2/2)</span><span>5</span></div>
+</section>
+
+<!-- 6 · Ficha de Experiencia -->
+<section class="hoja">
+  <p class="k">Hoja 6 · Zona 2 · Diseñar la experiencia</p>
+  <h2>Ficha de Experiencia</h2>
+  <p>Célula: <span style="display:inline-block;width:60mm;border-bottom:1px solid #141312"></span></p>
+  <div class="caja"><h3>La frase que lo ordena todo</h3>
+    <p class="frase">Queremos que el público sienta <u></u> mientras descubre <u></u> y decide <u></u>.</p>
+    <p class="ej">Ejemplo (Célula 0): sienta vértigo mientras descubre que su propio rostro es contrabando y decide si pintarse para desaparecer.</p></div>
+  <div class="grid2">
+    <div class="caja"><h3>El verbo central</h3><p class="ej">Ej.: ocultarse.</p><div class="linea"></div></div>
+    <div class="caja"><h3>La transformación</h3><p class="frase" style="font-size:12pt">De <u style="min-width:30mm"></u> a <u style="min-width:30mm"></u></p><p class="ej">Ej.: del miedo a la complicidad.</p></div>
+  </div>
+  <div class="caja"><h3>Tres pilares (frases que no se negocian)</h3><p class="ej">Ej.: «Pasto no es un decorado». «Toda tecnología tiene un costo».</p><div class="linea"></div><div class="linea"></div><div class="linea"></div></div>
+  <div class="caja"><h3>Terminado cuando…</h3><p>Alguien de otra célula lee esta ficha y explica en 15 segundos qué se siente y qué se hace. Firma: <span style="display:inline-block;width:50mm;border-bottom:1px solid #141312"></span></p></div>
+  <div class="pie"><span>Ficha de Experiencia</span><span>6</span></div>
+</section>
+
+<!-- 7 · Constitución del Mundo -->
+<section class="hoja">
+  <p class="k">Hoja 7 · Zona 3 · Pasto 2037</p>
+  <h2>Constitución del Mundo</h2>
+  <div class="grid3">
+    <div class="caja"><h3>Fuerza</h3><p class="ej">Ej.: Carnaval</p><div class="linea"></div></div>
+    <div class="caja"><h3>× Tecnología</h3><p class="ej">Ej.: máscara biométrica</p><div class="linea"></div></div>
+    <div class="caja"><h3>× Pérdida</h3><p class="ej">Ej.: el rostro</p><div class="linea"></div></div>
+  </div>
+  <div class="caja"><h3>Tres reglas irrompibles</h3><p class="ej">Ej.: «Toda cámara pública identifica rostros en tiempo real».</p><div class="linea"></div><div class="linea"></div><div class="linea"></div></div>
+  <div class="grid2">
+    <div class="caja"><h3>La tecnología se llama…</h3><p class="ej">Ej.: el Ojo de Atriz</p><div class="linea"></div></div>
+    <div class="caja"><h3>Su costo humano</h3><p class="ej">Ej.: el anonimato</p><div class="linea"></div></div>
+  </div>
+  <div class="caja"><h3>Tres actores</h3><table><tr><th>Quién controla</th><th>Quién se beneficia</th><th>Quién resiste</th></tr><tr><td class="ej">La Alcaldía Biométrica</td><td class="ej">Los vendedores de máscaras legales</td><td class="ej">Las cuadrillas de talco</td></tr><tr><td style="height:12mm"></td><td></td><td></td></tr></table></div>
+  <div class="caja"><h3>La contradicción central</h3><p class="ej">Ej.: la fiesta que celebra mezclarse y desaparecer es la que más vigila.</p><div class="linea"></div><div class="linea"></div></div>
+  <div class="pie"><span>Constitución del Mundo · Terminado cuando las reglas producen escenas sin explicación enciclopédica</span><span>7</span></div>
+</section>
+
+<!-- 8 · Plano de Nivel (A3) -->
+<section class="hoja hoja--a3">
+  <div class="plano">
+    <div class="plano__hoja"><span class="marca marca--a"></span><span class="marca marca--b"></span><span class="marca marca--c"></span><span class="marca marca--d"></span></div>
+    <div>
+      <p class="k">Hoja 8 · Zonas 4 y 5 · Del plano al mundo jugable</p>
+      <h2 style="font-size:24pt">Plano de Nivel</h2>
+      <p>Célula: <span style="display:inline-block;width:42mm;border-bottom:1px solid #141312"></span></p>
+      <p>Versión: &nbsp;☐ 1 &nbsp;☐ 2</p>
+      <p>Lugar de Pasto:</p><div class="linea"></div>
+      <p>Encabezado de escena:</p><p class="ej" style="margin:0">EXT. PLAZA DE NARIÑO · NOCHE</p><div class="linea"></div>
+      <h3>Leyenda</h3>
+      <ul class="leyenda">
+        <li><span class="dot" style="background:#f26b1d"></span>Acceso · 1</li>
+        <li><span class="dot" style="background:#c8261e"></span>Pista · 3</li>
+        <li><span class="dot" style="background:#f2c230"></span>Punto de presión · 1</li>
+        <li><span class="dot" style="background:#1f5fa8"></span>Decisión · 1</li>
+        <li><span class="dot" style="background:#2e8b57"></span>Salida · 1</li>
+        <li><span style="font-size:18pt;width:7mm;text-align:center">★</span>Hito (se ve desde todo el mapa; en el escáner se marca con la herramienta Hito)</li>
+        <li><span style="width:7mm;border-top:3px dashed #141312"></span>Desvío opcional</li>
+        <li><span class="tri"></span>Cámara · 6, numeradas</li>
+        <li><span style="width:7mm;height:7mm;border:1.5px dashed #8a857c;border-radius:50%"></span>Zona sonora · 3, a lápiz</li>
+        <li><span style="width:7mm;height:4mm;background:#141312"></span>Muro: marcador negro</li>
+      </ul>
+      <h3>Terminado cuando…</h3>
+      <p>Un extraño señala la salida en 3 segundos.</p>
+      <p class="ej">Rellenen las celdas completas: el escáner las lee una por una.</p>
+    </div>
+  </div>
+</section>
+
+<!-- 9 · Hoja de Playtest -->
+<section class="hoja">
+  <p class="k">Hoja 9 · Zona 5 · Niebla de guerra</p>
+  <h2>Hoja de Playtest</h2>
+  <div class="caja"><h3>Antes: quien juegue debería entender…</h3><p class="ej">Ej.: que el arco de la Calle Real registra rostros y que hay otra ruta.</p><div class="linea"></div><div class="linea"></div></div>
+  <div class="caja"><h3>Durante: observar sin explicar</h3>
+    <table><tr><th>Observación (lo que hizo)</th><th>Interpretación (lo que creemos)</th><th>Hipótesis (si cambiamos…)</th></tr>
+      <tr><td class="ej">Se detuvo 20 segundos frente a la lona azul.</td><td class="ej">No entendió la pista.</td><td class="ej">Si la pista brilla más, la verá.</td></tr>
+      <tr><td style="height:14mm"></td><td></td><td></td></tr><tr><td style="height:14mm"></td><td></td><td></td></tr><tr><td style="height:14mm"></td><td></td><td></td></tr><tr><td style="height:14mm"></td><td></td><td></td></tr>
+    </table></div>
+  <div class="grid2">
+    <div class="caja"><h3>¿Cuántas veces preguntó «¿y ahora qué?»</h3><p style="font-size:20pt;letter-spacing:4mm">☐☐☐☐☐☐☐☐</p><p class="ej">Cada pregunta es una pista que falta o un espacio que no se lee.</p></div>
+    <div class="caja"><h3>Después: un único cambio</h3><div class="linea"></div><p>Lo justificamos con esta observación:</p><div class="linea"></div></div>
+  </div>
+  <div class="pie"><span>Hoja de Playtest · Si tienes que explicarlo, el nivel todavía no funciona</span><span>9</span></div>
+</section>
+
+<!-- 10 · Storyboard (horizontal) -->
+<section class="hoja hoja--h">
+  <p class="k">Hoja 10 · Zona 6 · Vertical slice · Una viñeta por cada cámara del plano</p>
+  <h2>Storyboard · 30 a 45 segundos</h2>
+  <div class="story" id="story"></div>
+  <div class="pie"><span>Storyboard · Cada plano con al menos una luz práctica</span><span>10</span></div>
+</section>
+
+<!-- 11 · Pitch -->
+<section class="hoja">
+  <p class="k">Hoja 11 · Zona 7 · Estreno</p>
+  <h2>Pitch en 2 minutos</h2>
+  <div class="caja"><h3>1 · El mundo en una frase</h3><p class="ej">Ej.: En el Carnaval de 2037, pintarse la cara es contrabando.</p><div class="linea"></div></div>
+  <div class="caja"><h3>2 · La experiencia</h3><p>Sentir · descubrir · decidir</p><div class="linea"></div></div>
+  <div class="caja"><h3>3 · La decisión central y su consecuencia</h3><div class="linea"></div><div class="linea"></div></div>
+  <div class="caja"><h3>4 · Por qué solo puede pasar en Pasto</h3><div class="linea"></div><div class="linea"></div></div>
+  <div class="caja"><h3>5 · El siguiente medio</h3><p>☐ Cortometraje &nbsp; ☐ Videojuego &nbsp; ☐ Cómic &nbsp; ☐ Instalación &nbsp; ☐ XR &nbsp; ☐ Otro: ______</p></div>
+  <div class="caja"><h3>Crítica de estudio (la escribe otra célula)</h3><table><tr><th>Conservar</th><th>Iterar</th><th>Siguiente medio</th></tr><tr><td style="height:20mm"></td><td></td><td></td></tr></table><p class="ej">Se dice «vi que…», no «me gustó».</p></div>
+  <div class="pie"><span>Pitch · Dos minutos es una disciplina de industria</span><span>11</span></div>
+</section>
+
+<!-- 12 · Glosario -->
+<section class="hoja">
+  <p class="k">Hoja 12 · Glosario de bolsillo · Recortar</p>
+  <div class="glosarios" id="glosarios"></div>
+  <div class="pie"><span>Glosario</span><span>12</span></div>
+</section>
+
+<script>
+  const $ = s => document.querySelector(s);
+  // pasaportes
+  const ZONAS = ['1 Transmisión', '2 Experiencia', '3 Pasto 2037', '4 Espacio', '5 Niebla', '6 Vertical slice', '7 Estreno', '★ Refugio'];
+  $('#pasaportes').innerHTML = Array.from({ length: 4 }, () => `<div class="pasaporte corte">
+    <p class="k" style="color:#c8261e">República de Pasto · 2037</p>
+    <h3 style="margin:0;font-size:18pt">Pasaporte</h3>
+    <p style="margin:0">Nombre: ______________________</p><p style="margin:0">Célula: _______ &nbsp; Rol inicial: ___________</p>
+    <p style="margin:2mm 0 0;font-size:9pt">Cada zona superada, un sello. Al final, este pasaporte es tu recorrido por el nivel.</p>
+    <div class="sellos">${ZONAS.map(z => `<div>${z}</div>`).join('')}</div></div>`).join('');
+  // mazo del mundo
+  const F = [['Volcán', 'El Galeras manda: alertas, ceniza, evacuación.'], ['Carnaval', 'La fiesta que suspende las reglas.'], ['Barniz', 'Un oficio que casi desaparece.'], ['La Cocha', 'El agua como bien escaso.'], ['Páramo', 'Frailejones: la fábrica del agua.'], ['Mercado', 'Todo se compra, se repara y se revende.']];
+  const T = [['Implante de memoria', 'Recordar se paga.'], ['IA municipal', 'La ciudad decide por ti.'], ['Máscara biométrica', 'Tu cara es tu documento.'], ['Exoesqueleto', 'Trabajar más, sentir menos.']];
+  const P = [['El rostro', 'Ya nadie es anónimo.'], ['El idioma', 'Las palabras de la abuela se apagan.'], ['El cielo', 'La ceniza no deja ver las estrellas.'], ['El agua', 'Llueve, pero no es de todos.'], ['El olvido', 'Nada se puede borrar.']];
+  const carta = (cls, tipo, [t, e]) => `<div class="carta corte carta--${cls}"><span>${tipo}</span><b>${t}</b><em>${e}</em></div>`;
+  $('#mazo-a').innerHTML = [...F.map(c => carta('fuerza', 'Fuerza territorial', c)), ...T.map(c => carta('tec', 'Tecnología', c))].slice(0, 9).join('');
+  const rev = `<div class="carta corte" style="background:#141312;color:#f2c230;text-align:center"><span>Mazo del Mundo</span><b>GALERAS 2037</b><em style="color:#ede8dc">Fuerza × Tecnología × Pérdida</em></div>`;
+  $('#mazo-b').innerHTML = [...T.slice(3).map(c => carta('tec', 'Tecnología', c)), ...P.map(c => carta('perdida', 'Pérdida', c)), rev, rev, rev].join('');
+  // storyboard
+  $('#story').innerHTML = Array.from({ length: 6 }, (_, k) => `<div class="vineta"><div class="marco" data-n="${k + 1}"></div>
+    <div class="campo"><b>Plano</b><span>☐ general ☐ medio ☐ detalle ☐ contrapicado</span></div>
+    <div class="campo"><b>Luz práctica</b><span></span></div><div class="campo"><b>Sonido</b><span></span></div><div class="campo"><b>Segundos</b><span></span></div></div>`).join('');
+  // glosario
+  const G = [['Verbo', 'La acción central de quien juega.', 'el gesto del personaje'], ['Mecánica', 'Una regla que se puede usar.', 'la regla del mundo'], ['Bucle', 'Atención → interpretación → decisión → consecuencia.', 'el ritmo de la escena'], ['Nivel', 'Un espacio diseñado para descubrir.', 'la puesta en escena'], ['Camino crítico', 'La ruta mínima para terminar.', 'el hilo de la trama'], ['Hito', 'Lo que se ve desde lejos y orienta.', 'el plano de ubicación'], ['Pista', 'Un objeto que revela una regla.', 'el plano detalle'], ['Playtest', 'Ver jugar a otro sin explicarle.', 'la proyección de prueba'], ['Vertical slice', 'Una porción con calidad final.', 'el teaser'], ['Plano', 'Mapa visto desde arriba… o encuadre.', 'las dos cosas'], ['Storyboard', 'Los planos dibujados en orden.', 'el greybox del juego'], ['Pitch', 'Vender la idea en 2 minutos.', 'el pitch de festival']];
+  $('#glosarios').innerHTML = Array.from({ length: 4 }, () => `<div class="glosario corte"><p class="k">Glosario de bolsillo · Galeras 2037</p><dl>${G.map(([a, b, c]) => `<div><dt>${a}</dt><dd>${b} <i>En cine: ${c}.</i></dd></div>`).join('')}</dl></div>`).join('');
+</script>
+</body>
+</html>

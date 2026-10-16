@@ -1,0 +1,489 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Galeras 2037</title>
+  <meta name="description" content="Galeras 2037: del plano al mundo jugable. Taller de game design, level design y cine en el FICPA 2026, Pasto. Por Andrés Ordóñez-Bolaños.">
+  <meta name="theme-color" content="#171614">
+  <meta property="og:title" content="Galeras 2037 · Del plano al mundo jugable">
+  <meta property="og:description" content="Pasto, 2037. Un taller para dibujar planos y rodar planos. FICPA 2026.">
+  <meta property="og:image" content="assets/img/hero-fallback.jpg">
+  <link rel="preload" href="assets/fonts/bungee-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/base.css">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <link rel="stylesheet" href="assets/css/nivel.css">
+  <link rel="stylesheet" href="assets/css/aprender.css">
+  <link rel="stylesheet" href="assets/css/juego.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171614'/%3E%3Cpath d='M3 27 L14 9 L16 11 L18 9 L29 27Z' fill='%23f26b1d'/%3E%3Cpath d='M13 9 Q16 3 19 9' stroke='%23f2c230' stroke-width='2' fill='none'/%3E%3C/svg%3E">
+  <script type="importmap">{ "imports": { "three": "./vendor/three/three.module.min.js", "three/addons/": "./vendor/three/addons/" } }</script>
+</head>
+<body>
+  <a class="skip" href="#taller">Saltar al contenido</a>
+
+  <header class="marquesina" id="top">
+    <a class="marquesina__brand" href="#top" aria-label="Galeras 2037, inicio">GALERAS<span>2037</span></a>
+    <nav class="marquesina__nav" aria-label="Secciones">
+      <a href="#aprender">Aprender</a>
+      <a href="#recorrido">Recorrido</a>
+      <a href="slides/">Slides</a>
+      <a href="#tallerista">Tallerista</a>
+    </nav>
+    <span class="marquesina__led" aria-hidden="true">FICPA 2026 · EN VIVO</span>
+  </header>
+
+  <main>
+    <!-- 1. El mercado: escena 3D con scroll -->
+    <section class="mercado" id="mercado" aria-label="Pasto 2037, experiencia 3D">
+      <div class="mercado__stage">
+        <canvas class="mercado__canvas" id="market" aria-hidden="true"></canvas>
+        <p class="mercado__loading" aria-hidden="true">Sintonizando transmisión</p>
+        <div class="mercado__fallback" data-img="hero-fallback" data-alt="Calle de mercado de Pasto en 2037 bajo la ceniza del Galeras"></div>
+
+        <h1 class="sr-only">Galeras 2037: del plano al mundo jugable. Taller de game design, level design y cine. FICPA 2026.</h1>
+
+        <div class="anno" id="anno" aria-hidden="true"></div>
+
+        <aside class="capitulo" id="capitulo" aria-live="polite">
+          <button type="button" class="capitulo__min" id="cap-min" aria-expanded="true" aria-label="Contraer el texto del capítulo"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+          <p class="capitulo__kicker" id="cap-kicker">Pasto · Nariño · 2037</p>
+          <h2 class="capitulo__title" id="cap-title">Galeras 2037</h2>
+          <p class="capitulo__text" id="cap-text">Un nivel completo diseñado con el método del taller. Baja para recorrerlo como lo haría un level designer.</p>
+          <p class="capitulo__pasto" id="cap-pasto"><span>En Pasto</span>Pasto, capital de Nariño, a unos 2.500 metros de altura y al pie del volcán Galeras.</p>
+          <p class="capitulo__cine" id="cap-cine"><span>En cine</span>Plano de ubicación: antes de la historia, el público necesita saber dónde está.</p>
+          <div class="capitulo__actions" id="cap-actions">
+            <button type="button" class="tarp-plate" data-play><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M7 4l13 8-13 8z" fill="currentColor"/></svg>Jugar el nivel</button>
+            <a class="tarp-plate tarp-plate--blue" href="slides/">Ver las slides</a>
+          </div>
+        </aside>
+
+        <nav class="rail" aria-label="Capítulos del recorrido">
+          <ol id="rail-list"></ol>
+        </nav>
+        <p class="rail-mini" id="rail-mini" aria-hidden="true"></p>
+
+        <div class="scroll-cue" aria-hidden="true"><span>Baja para recorrer el nivel</span></div>
+
+        <div class="letterbox" aria-hidden="true">
+          <div class="letterbox__bar letterbox__bar--top"><span class="rec">REC</span><span>PLANO 1 · 35 MM · 2.39:1</span></div>
+          <div class="letterbox__bar letterbox__bar--bottom"><span>CÉLULA 0 · PLAZA DE NARIÑO · TOMA 3</span><span class="tc" id="timecode">00:00:00:00</span></div>
+        </div>
+
+        <div class="led-ticker mercado__ticker" aria-hidden="true">
+          <div class="led-ticker__track">
+            <span>Boletín de ceniza · Alerta naranja · Use mascarilla · Taller Galeras 2037 · Del plano al mundo jugable · FICPA 2026 · Ciclo Nuestro Talento · Pasto, Nariño ·</span>
+            <span>Boletín de ceniza · Alerta naranja · Use mascarilla · Taller Galeras 2037 · Del plano al mundo jugable · FICPA 2026 · Ciclo Nuestro Talento · Pasto, Nariño ·</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 2. El taller: umbral de papel -->
+    <section class="taller" id="taller">
+      <div class="taller__inner">
+        <h2 class="taller__thesis">
+          <span>El cine organiza planos.</span>
+          <span>El game design organiza experiencias.</span>
+          <span>El level design organiza el descubrimiento.</span>
+        </h2>
+        <div class="taller__body">
+          <p class="lead">GALERAS 2037 es un laboratorio de una mañana en el que realizadores, guionistas, artistas y estudiantes imaginan una Pasto distópica y diseñan una escena que se puede entender como <em>película, espacio y sistema</em>.</p>
+          <p>No se programa. Se dibuja en papel, se juega sobre la mesa, se prueba con otro equipo y se rueda con el celular. Es el método de un estudio AAA, llevado al cine: formular una experiencia, prototiparla, probarla y producir solo lo que fortalece la visión.</p>
+          <figure class="hipotesis">
+            <figcaption>Antes de preguntar qué historia contamos, cada equipo completa esta frase:</figcaption>
+            <blockquote>Queremos que el público <u>sienta</u> mientras <u>descubre</u> y <u>decide</u>.</blockquote>
+          </figure>
+        </div>
+        <dl class="taller__facts">
+          <div><dt>Dónde</dt><dd>FICPA 2026 · Pasto, Nariño</dd></div>
+          <div><dt>Cuándo</dt><dd>13 al 17 de octubre · una mañana de 4 h 30</dd></div>
+          <div><dt>Quiénes</dt><dd>10 a 15 personas en 3 células</dd></div>
+          <div><dt>Qué traer</dt><dd>Un celular cargado (opcional). Nada más.</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- 2b. Lo que vas a aprender: las cuatro capas -->
+    <section class="capas" id="aprender">
+      <header class="capas__head">
+        <h2>Lo que vas a aprender</h2>
+        <p>Cuatro capas que un estudio de videojuegos usa todos los días y que el cine puede usar mañana. Cada una se ve funcionando en el nivel de arriba.</p>
+      </header>
+      <ol class="capas__list">
+        <li class="capa capa--game">
+          <div class="capa__id">
+            <h3>Game design</h3>
+            <p class="capa__q">¿Qué siente, descubre y decide el público?</p>
+          </div>
+          <ul class="capa__conceptos"><li>Verbo central</li><li>Bucle atención → decisión → consecuencia</li><li>Reglas que generan escenas</li><li>Decisión significativa</li></ul>
+          <dl class="capa__cruce">
+            <div><dt>En el cine</dt><dd>La dramaturgia de la experiencia: qué hace el público con su atención.</dd></div>
+            <div><dt>En Pasto 2037</dt><dd>"El talco es contrabando": una sola regla y el Carnaval se vuelve conflicto.</dd></div>
+          </dl>
+          <button type="button" class="capa__ver" data-goto="7">Verlo en el nivel: la decisión</button>
+        </li>
+        <li class="capa capa--level">
+          <div class="capa__id">
+            <h3>Level design</h3>
+            <p class="capa__q">¿Cómo organiza el espacio el descubrimiento?</p>
+          </div>
+          <ul class="capa__conceptos"><li>Camino crítico y desvío</li><li>Hitos y líneas de visión</li><li>Puntos de presión</li><li>Ritmo: tensión y alivio</li></ul>
+          <dl class="capa__cruce">
+            <div><dt>En el cine</dt><dd>Puesta en escena, bloqueo de actores y planta de cámara.</dd></div>
+            <div><dt>En Pasto 2037</dt><dd>El Galeras es el hito; la Plaza de Nariño es el nodo; el callejón de San Juan, el desvío.</dd></div>
+          </dl>
+          <button type="button" class="capa__ver" data-goto="2">Verlo en el nivel: el camino crítico</button>
+        </li>
+        <li class="capa capa--cine">
+          <div class="capa__id">
+            <h3>Lenguaje de cine</h3>
+            <p class="capa__q">¿Cómo se convierte la experiencia en planos?</p>
+          </div>
+          <ul class="capa__conceptos"><li>Encuadre y tipos de plano</li><li>Montaje</li><li>Fuera de campo</li><li>Sonido y luz</li></ul>
+          <dl class="capa__cruce">
+            <div><dt>En los juegos</dt><dd>Cámara, cinemáticas, diseño de audio e iluminación que guía al jugador.</dd></div>
+            <div><dt>En Pasto 2037</dt><dd>El contrapicado al Ojo de Atriz, el plano detalle del talco, la toma final en 2.39:1.</dd></div>
+          </dl>
+          <button type="button" class="capa__ver" data-goto="11">Verlo en el nivel: la toma</button>
+        </li>
+        <li class="capa capa--tec">
+          <div class="capa__id">
+            <h3>Liderazgo técnico</h3>
+            <p class="capa__q">¿Cómo se vuelve realizable una visión?</p>
+          </div>
+          <ul class="capa__conceptos"><li>Prototipo en papel</li><li>Greybox</li><li>Playtest</li><li>Vertical slice</li></ul>
+          <dl class="capa__cruce">
+            <div><dt>En el cine</dt><dd>Preproducción, previsualización y producción virtual.</dd></div>
+            <div><dt>En Pasto 2037</dt><dd>Este nivel nació como un plano de papel y se probó antes de pintarse.</dd></div>
+          </dl>
+          <button type="button" class="capa__ver" data-goto="9">Verlo en el nivel: el plano</button>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 2c. Diccionario cine ↔ videojuego -->
+    <section class="dicc" id="diccionario">
+      <div class="dicc__inner">
+        <header class="dicc__head">
+          <h2>El diccionario</h2>
+          <p>El cine y los videojuegos llaman distinto a las mismas ideas. Traducir entre los dos es la habilidad central del taller.</p>
+        </header>
+        <table class="dicc__tabla">
+          <thead><tr><th scope="col">En el cine</th><th scope="col" aria-hidden="true"></th><th scope="col">En el videojuego</th><th scope="col">Lo que significa</th></tr></thead>
+          <tbody>
+            <tr><td>Guion</td><td aria-hidden="true"></td><td>Reglas y sistemas</td><td>Lo que puede pasar, no solo lo que pasa.</td></tr>
+            <tr><td>Puesta en escena</td><td aria-hidden="true"></td><td>Level design</td><td>El espacio organiza lo que se ve y en qué orden.</td></tr>
+            <tr><td>Planta de cámara</td><td aria-hidden="true"></td><td>Mapa del nivel</td><td>El mismo dibujo, visto desde arriba.</td></tr>
+            <tr><td>Storyboard</td><td aria-hidden="true"></td><td>Greybox</td><td>Probar la idea antes de gastar en arte.</td></tr>
+            <tr><td>Plano de ubicación</td><td aria-hidden="true"></td><td>Hito</td><td>Algo que orienta desde lejos.</td></tr>
+            <tr><td>Fuera de campo</td><td aria-hidden="true"></td><td>Niebla de guerra</td><td>Lo que no se ve también genera tensión.</td></tr>
+            <tr><td>Montaje</td><td aria-hidden="true"></td><td>Ritmo del nivel</td><td>Alternar tensión y alivio.</td></tr>
+            <tr><td>Plano secuencia</td><td aria-hidden="true"></td><td>Cámara sin cortes</td><td>El tiempo real del jugador.</td></tr>
+            <tr><td>Continuidad</td><td aria-hidden="true"></td><td>Coherencia del mundo</td><td>Las reglas no se rompen entre planos.</td></tr>
+            <tr><td>Proyección de prueba</td><td aria-hidden="true"></td><td>Playtest</td><td>Observar al público antes del corte final.</td></tr>
+            <tr><td>Previsualización</td><td aria-hidden="true"></td><td>Prototipo jugable</td><td>Ver la escena antes de rodarla.</td></tr>
+            <tr><td>Teaser</td><td aria-hidden="true"></td><td>Vertical slice</td><td>La pieza mínima que demuestra la promesa.</td></tr>
+            <tr><td>Actor</td><td aria-hidden="true"></td><td>Jugador</td><td>Quien actúa; en el juego, también decide.</td></tr>
+            <tr><td>Set de rodaje</td><td aria-hidden="true"></td><td>Motor en tiempo real</td><td>Hoy el motor de juego ya es un set de cine.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <!-- 2d. Historia cruzada -->
+    <section class="cruce" id="historia">
+      <header class="cruce__head">
+        <h2>130 años de préstamos</h2>
+        <p>El cine aprendió a mostrar. Los videojuegos aprendieron a dejar hacer. Desde hace décadas se roban ideas el uno al otro.</p>
+      </header>
+      <div class="cruce__track" tabindex="0" aria-label="Línea de tiempo cine y videojuegos">
+        <ol>
+          <li class="is-cine"><time>1895</time><b>Hermanos Lumière</b><span>El cine nace como atracción: un tren que llega a la estación.</span></li>
+          <li class="is-cine"><time>1902</time><b>Viaje a la Luna</b><span>Georges Méliès inventa mundos imposibles con trucos de cámara.</span></li>
+          <li class="is-cine"><time>1925</time><b>El acorazado Potemkin</b><span>Eisenstein: el montaje crea sentido al chocar dos imágenes.</span></li>
+          <li class="is-cine"><time>1941</time><b>Ciudadano Kane</b><span>La profundidad de campo deja que el público elija dónde mirar.</span></li>
+          <li class="is-juego"><time>1958</time><b>Tennis for Two</b><span>El primer juego en una pantalla: un osciloscopio.</span></li>
+          <li class="is-cine"><time>1962</time><b>La Jetée</b><span>Chris Marker hace ciencia ficción con fotografías fijas.</span></li>
+          <li class="is-juego"><time>1972</time><b>Pong</b><span>Una regla que se entiende en un segundo.</span></li>
+          <li class="is-cruce"><time>1982</time><b>Tron</b><span>El cine entra a la máquina.</span></li>
+          <li class="is-juego"><time>1983</time><b>Dragon's Lair</b><span>Un juego hecho de animación de cine: la película interactiva.</span></li>
+          <li class="is-juego"><time>1998</time><b>Half-Life</b><span>La historia se cuenta sin quitarle el control al jugador.</span></li>
+          <li class="is-cine"><time>1999</time><b>Matrix</b><span>El "bullet time" salta del cine a Max Payne (2001).</span></li>
+          <li class="is-cruce"><time>2003</time><b>Red vs Blue</b><span>Machinima: series filmadas dentro de un videojuego.</span></li>
+          <li class="is-cine"><time>2006</time><b>Children of Men</b><span>Planos secuencia que se sienten jugables.</span></li>
+          <li class="is-juego"><time>2013</time><b>The Last of Us</b><span>Un juego que actúa como cine; en 2023 llega a la televisión.</span></li>
+          <li class="is-cine"><time>2015</time><b>Hardcore Henry</b><span>Una película entera en primera persona.</span></li>
+          <li class="is-cruce"><time>2018</time><b>Bandersnatch</b><span>Netflix estrena cine donde el público decide.</span></li>
+          <li class="is-cruce"><time>2019</time><b>The Mandalorian</b><span>Producción virtual: los fondos se renderizan en un motor de juego.</span></li>
+          <li class="is-juego"><time>2025</time><b>Raptor Heist</b><span>Nominado en The Game Awards, hecho en UEFN.</span></li>
+          <li class="is-cruce is-hoy"><time>2026</time><b>Galeras 2037</b><span>Cineastas de Pasto diseñan un nivel para rodarlo.</span></li>
+        </ol>
+      </div>
+      <div class="cruce__nav"><button type="button" data-cruce="-1" aria-label="Más atrás en el tiempo">←</button><span>Desliza o usa las flechas</span><button type="button" data-cruce="1" aria-label="Más adelante en el tiempo">→</button></div>
+      <p class="cruce__ley"><span class="dot dot--cine"></span>Cine <span class="dot dot--juego"></span>Videojuego <span class="dot dot--cruce"></span>Cruce</p>
+    </section>
+
+    <!-- 2e. La parte técnica -->
+    <section class="pipe" id="tecnica">
+      <header class="pipe__head">
+        <h2>El motor es el set</h2>
+        <p>Así se construyó el nivel de arriba. Es el mismo proceso de un estudio, y es el mismo que usarás en el taller con papel y celular.</p>
+      </header>
+      <ol class="pipe__steps">
+        <li><b>Papel</b><span>Plano de nivel: muros, pistas, presión, decisión y salida.</span><em>En el taller: la plantilla A3.</em></li>
+        <li><b>Greybox</b><span>Cajas grises para probar recorridos antes del arte.</span><em>En el taller: fichas y post-its.</em></li>
+        <li><b>Reglas</b><span>El escáner registra, la máscara te delata, el talco te oculta.</span><em>En el taller: la Constitución del Mundo.</em></li>
+        <li><b>Luz y atmósfera</b><span>Sodio, cian, ceniza: la luz guía la mirada.</span><em>En el taller: linterna y celofán.</em></li>
+        <li><b>Cámara</b><span>Cada capítulo es una toma con lente y encuadre.</span><em>En el taller: las 6 cámaras del mapa.</em></li>
+        <li><b>Playtest</b><span>Alguien juega sin ayuda; se corrige lo que no se lee.</span><em>En el taller: niebla de guerra.</em></li>
+      </ol>
+      <p class="pipe__nota">Esta página corre en un motor 3D en tiempo real dentro del navegador. Es el mismo principio con el que Unreal Engine se usa hoy en la producción virtual de series y películas.</p>
+    </section>
+
+    <!-- 3. Recorrido: la mañana como un nivel -->
+    <section class="recorrido" id="recorrido">
+      <header class="recorrido__head">
+        <h2>La mañana es un nivel</h2>
+        <p>Siete zonas con su propia curva de tensión: entrar, aprender, escalar, llegar al pico y estrenar. Al final del taller se revela por qué.</p>
+      </header>
+      <div class="sismo" aria-hidden="true">
+        <svg viewBox="0 0 1000 160" preserveAspectRatio="none"><path id="sismo-path" d=""/></svg>
+      </div>
+      <ol class="zonas">
+        <li class="zona" data-tension="0.35">
+          <time>8:00</time>
+          <h3>Transmisión</h3>
+          <p>Las luces se apagan y Pasto 2037 aparece en pantalla. La tesis: <em>plano</em> es mapa y <em>plano</em> es toma.</p>
+          <span class="zona__out">Preguntas semilla</span>
+        </li>
+        <li class="zona" data-tension="0.5">
+          <time>8:20</time>
+          <h3>Diseñar la experiencia</h3>
+          <p>Cómo los juegos aprendieron del cine y el cine de los juegos. Verbo, bucle y emoción antes que historia.</p>
+          <span class="zona__out">Ficha de Experiencia</span>
+        </li>
+        <li class="zona" data-tension="0.72">
+          <time>9:00</time>
+          <h3>Pasto 2037: distopías</h3>
+          <p>Utopía, distopía, cyberpunk, transhumanismo. Se roban cartas de territorio, tecnología y pérdida, y se escribe la Constitución del Mundo.</p>
+          <span class="zona__out">Constitución del Mundo</span>
+        </li>
+        <li class="zona zona--rest" data-tension="0.18">
+          <time>9:45</time>
+          <h3>Refugio</h3>
+          <p>Pausa con café y la galería de Pasto 2037 en loop.</p>
+          <span class="zona__out">—</span>
+        </li>
+        <li class="zona" data-tension="0.6">
+          <time>10:00</time>
+          <h3>El espacio también escribe</h3>
+          <p>Piranesi, Kevin Lynch y el Galeras como hito. Cada célula dibuja su nivel en un A3 y marca seis cámaras sobre el mapa.</p>
+          <span class="zona__out">Plano de Nivel</span>
+        </li>
+        <li class="zona zona--peak" data-tension="1">
+          <time>10:50</time>
+          <h3>Niebla de guerra</h3>
+          <p>Otro equipo juega tu mapa con las salas tapadas por post-its. Tú observas en silencio y después haces un único cambio.</p>
+          <span class="zona__out">Versión 2</span>
+        </li>
+        <li class="zona" data-tension="0.82">
+          <time>11:20</time>
+          <h3>Vertical slice</h3>
+          <p><em>La Jetée</em> demuestra que una fotosecuencia es cine. Storyboard de seis viñetas y rodaje con celular y celofán.</p>
+          <span class="zona__out">Microteaser de 30–45 s</span>
+        </li>
+        <li class="zona zona--premiere" data-tension="0.45">
+          <time>12:05</time>
+          <h3>Estreno</h3>
+          <p>Se proyecta cada pieza, y luego tu mapa de papel se levanta como mundo 3D y se recorre en vivo.</p>
+          <span class="zona__out">Paquete final</span>
+        </li>
+      </ol>
+    </section>
+
+    <!-- 4. Lo que te llevas: tablero del mercado -->
+    <section class="tablero" id="paquete">
+      <div class="tablero__board">
+        <h2>Lo que te llevas</h2>
+        <p class="tablero__sub">Paquete de Escena Expandible: una escena capaz de demostrar que tu universo merece convertirse en proyecto.</p>
+        <ul class="tablero__list">
+          <li><span>Hipótesis de experiencia</span><i></i><b>1 frase</b></li>
+          <li><span>Constitución del mundo</span><i></i><b>3 reglas</b></li>
+          <li><span>Núcleo de game design</span><i></i><b>1 verbo</b></li>
+          <li><span>Plano de nivel con cámaras</span><i></i><b>1 A3</b></li>
+          <li><span>Storyboard</span><i></i><b>6 viñetas</b></li>
+          <li><span>Evidencia de playtest</span><i></i><b>versión 2</b></li>
+          <li><span>Vertical slice</span><i></i><b>30–45 s</b></li>
+          <li><span>Pitch y siguiente medio</span><i></i><b>2 min</b></li>
+        </ul>
+        <p class="tablero__foot">Promesa realista: no terminas un cortometraje. Sales con una escena probada, filmada y lista para crecer hacia corto, videojuego, cómic o XR.</p>
+        <p class="tablero__foot"><a class="tarp-plate tarp-plate--paper" href="kit/">Descargar el kit imprimible</a></p>
+      </div>
+      <aside class="escaner">
+        <h3>Escáner de planos</h3>
+        <p>Fotografía tu Plano de Nivel A3: el escáner lee muros y stickers, te dice qué le falta frente a la plantilla y lo levanta como un nivel 3D que puedes recorrer.</p>
+        <p class="escaner__state led-inline">Estado: listo para el estreno</p>
+        <p><a class="tarp-plate" href="escaner/">Abrir el escáner</a></p>
+      </aside>
+    </section>
+
+    <!-- 5. Slides -->
+    <section class="sala" id="slides">
+      <div class="sala__head">
+        <h2>Las slides</h2>
+        <p>El taller completo en diapositivas: la ruta que se proyecta en vivo y un archivo profundo que queda abierto para siempre. Incluye historia de los videojuegos, arte, filosofía, distopías y cyberpunk.</p>
+        <p class="led-inline">Sala 1 · 7 zonas · ruta en vivo + archivo</p>
+        <div class="sala__actions">
+          <a class="tarp-plate tarp-plate--blue" href="slides/">Ver la ruta en vivo</a>
+          <a class="tarp-plate tarp-plate--paper" href="slides/?archivo">Abrir el archivo profundo</a>
+        </div>
+      </div>
+      <ol class="sala__index">
+        <li><a href="slides/#transmision">Transmisión</a><span>Pasto 2037 · plano y plano</span></li>
+        <li><a href="slides/#experiencia">Diseñar la experiencia</a><span>De Pong a Raptor Heist</span></li>
+        <li><a href="slides/#distopias">Distopías</a><span>Cyberpunk, transhumanismo, filosofía</span></li>
+        <li><a href="slides/#espacio">El espacio escribe</a><span>Piranesi, Lynch, el Galeras como hito</span></li>
+        <li><a href="slides/#niebla">Niebla de guerra</a><span>Playtest sin explicar</span></li>
+        <li><a href="slides/#vertical">Vertical slice</a><span>La Jetée y el celular</span></li>
+        <li><a href="slides/#estreno">Estreno</a><span>Pitch y siguiente medio</span></li>
+      </ol>
+    </section>
+
+    <!-- 6. Tallerista -->
+    <section class="tallerista" id="tallerista">
+      <div class="tallerista__pase" aria-hidden="true"><span class="tallerista__pase-k">FICPA 2026 · Tallerista</span><b>A·O·B</b><span>Game design · Level design · Cine</span><span class="tallerista__pase-c">Pase 2037</span></div>
+      <div class="tallerista__text">
+        <p class="led-inline">Andrés XR 369</p>
+        <h2>Andrés Ordóñez&#8209;Bolaños</h2>
+        <p class="lead">Lead Programmer y líder técnico de videojuegos AAA. Ha trabajado con Warner Bros., Disney y Rockstar Games, y ha liderado proyectos junto a Epic Games y Wizards of the Coast.</p>
+        <p>Fue Lead Programmer de <strong>Raptor Heist</strong>, nominado en The Game Awards 2025, y participó en <strong>Steal an Egg</strong>, <strong>Dungeons &amp; Dragons</strong> y <strong>Orcs Must Die! By the Blade</strong>. Es magíster en Ciencias de la Computación, investigador con publicaciones en IEEE y Springer, profesor universitario y fundador de Realidades X, con más de 100 clientes. Es nariñense.</p>
+        <p class="tallerista__links"><a href="https://ordonezoswaldo.com" rel="noopener">ordonezoswaldo.com</a> <a href="https://www.linkedin.com/in/andresordonezbolanos" rel="noopener">LinkedIn</a></p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="pie">
+    <div class="led-ticker" aria-hidden="true">
+      <div class="led-ticker__track">
+        <span>Fin de la transmisión · Galeras 2037 · Gracias por jugar · Siguiente nivel: tu proyecto ·</span>
+        <span>Fin de la transmisión · Galeras 2037 · Gracias por jugar · Siguiente nivel: tu proyecto ·</span>
+      </div>
+    </div>
+    <div class="pie__inner">
+      <p><strong>FICPA 2026</strong> · Festival Internacional de Cine de Pasto · Ciclo de Talleres Nuestro Talento.</p>
+      <p>Las imágenes de Pasto 2037 son renders en tiempo real del nivel construido para el taller, más ilustraciones creadas con IA bajo dirección del autor. La IA asiste; la autoría decide.</p>
+    </div>
+  </footer>
+
+  <!-- Modo jugable -->
+  <div class="juego" id="juego" hidden>
+    <div class="jvignette" aria-hidden="true"></div>
+    <div class="jvisor" id="j-visor" hidden aria-hidden="true">
+      <i></i><i></i><i></i><i></i><span class="jvisor__tercios"></span><span class="jvisor__cruz"></span>
+      <p class="jvisor__rec"><b></b>REC <span id="jv-tc">00:00</span></p>
+      <p class="jvisor__lente" id="jv-lente">35 mm · 2.39:1</p>
+      <p class="jvisor__tipo" id="jv-tipo"><span>Encuadre</span><b id="jv-tipo-t">Plano general</b><em id="jv-tipo-h">F para rodar</em></p>
+    </div>
+    <p class="jenfoque" id="j-enfoque" hidden><b>Plano detalle</b> · la cámara se acerca sola</p>
+
+    <button type="button" class="jruta" id="j-ruta" aria-label="Lección actual. Toca para repetir la explicación">
+      <span class="jruta__pips" id="j-pips" aria-hidden="true"></span>
+      <span class="jruta__obj"><span class="jruta__n" id="j-ruta-n">1/9</span><b class="jruta__t" id="j-ruta-t">Examina al Cuy Express</b><span class="jregistro" id="j-registro" hidden>Registrado</span></span>
+      <span class="jruta__sub"><span class="jruta__brujula" id="j-brujula"><span class="juego__flecha" id="j-flecha"></span><b id="j-obj">—</b><i id="j-dist">—</i></span><span class="jruta__k" id="j-ruta-k"></span></span>
+    </button>
+
+    <nav class="jtools" aria-label="Herramientas">
+      <button type="button" class="jtool" id="j-mapbtn" aria-pressed="false" title="Tu plano A3 (M)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 6l6-2 6 2 6-2v14l-6 2-6-2-6 2z M9 4v14 M15 6v14" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Plano A3</span></button>
+      <button type="button" class="jtool" id="j-design" aria-pressed="false" title="Capa de diseñador (L)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l9 5-9 5-9-5z M3 13l9 5 9-5" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></svg><span>Diseñador</span></button>
+      <button type="button" class="jtool" id="j-lens" aria-pressed="false" title="Lente de cine (C)"><svg viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="8" fill="none" stroke="currentColor" stroke-width="2"/><circle cx="12" cy="12" r="3.5" fill="none" stroke="currentColor" stroke-width="2"/></svg><span id="j-lens-t">Lente</span></button>
+      <button type="button" class="jtool" id="j-sound" aria-pressed="true" title="Sonido"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/><path class="jtool__on" d="M16.5 8.5a5 5 0 010 7 M19 6a8.5 8.5 0 010 12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg><span>Sonido</span></button>
+      <button type="button" class="jtool" id="j-helpbtn" title="Ayuda"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9.2 9a3 3 0 115 2.2c-1.1.8-2.2 1.4-2.2 2.8 M12 17.5v.5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg><span>Ayuda</span></button>
+      <button type="button" class="jtool jtool--exit" id="j-exit" title="Salir (Esc)"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 6l12 12 M18 6L6 18" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round"/></svg><span>Salir</span></button>
+    </nav>
+
+    <div class="jmarks" id="j-marks" aria-hidden="true"></div>
+    <div class="jslug" id="j-slug" aria-live="polite"><b id="j-slug-t"></b><span id="j-slug-r"></span></div>
+    <div class="jtoasts" id="j-toasts" aria-live="polite"></div>
+
+    <figure class="jmap" id="j-map" aria-label="Tu plano A3: el nivel visto desde arriba">
+      <button type="button" class="jmap__paper" id="j-map-paper" aria-label="Agrandar el plano"><canvas id="j-map-c" width="640" height="278"></canvas><span class="jmap__obj" id="j-map-obj"></span><span class="jmap__yo" id="j-map-yo"></span></button>
+      <figcaption><b>Tu plano A3</b><span>Este nivel, dibujado como en el taller.</span></figcaption>
+    </figure>
+
+    <section class="jguia" id="j-guia" hidden tabindex="-1" aria-live="polite" aria-label="Diálogo del guía">
+      <div class="jguia__retrato" id="jg-retrato" data-r="cuy"><img src="assets/img/g-cuy.jpg" alt="" width="148" height="148"><span class="jguia__icono" id="jg-icono" aria-hidden="true"></span></div>
+      <p class="jguia__nombre" id="jg-nombre">Cuy Express</p>
+      <div class="jguia__cuerpo">
+        <p class="jguia__logro" id="jg-logro" hidden><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12.5l5 5L20 6.5" fill="none" stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round"/></svg><span>Aprendiste: <b id="jg-logro-c"></b> · <span id="jg-logro-t"></span></span></p>
+        <p class="jguia__k" id="jg-k"></p>
+        <h3 class="jguia__t" id="jg-t"></h3>
+        <p class="jguia__texto" id="jg-texto"></p>
+        <ol class="jguia__ruta" id="jg-ruta" hidden></ol>
+        <dl class="jguia__dl" id="jg-dl"></dl>
+        <p class="jguia__teclas" id="jg-teclas"></p>
+      </div>
+      <button type="button" class="jguia__saltar" id="jg-saltar" hidden>Saltar intro</button>
+      <span class="jguia__sig" aria-hidden="true"><span id="jg-sig-t">Seguir</span><svg viewBox="0 0 16 12"><path d="M1 1h14L8 11z"/></svg></span>
+    </section>
+
+    <div class="jrec">
+      <div class="juego__tira" id="j-tira" aria-label="Planos tomados"></div>
+      <button type="button" class="jshutter" id="j-shot" title="Tomar plano (F)"><span class="jshutter__dot" aria-hidden="true"></span><span class="jshutter__t">Plano</span><b id="j-shot-n">0/6</b></button>
+    </div>
+    <button type="button" class="juego__act" id="j-act" hidden><kbd>E</kbd><span id="j-act-label">Examinar</span></button>
+
+    <div class="jdialog" id="j-decision" hidden>
+      <p class="jguia__nombre">Decisión · Game design</p>
+      <h3>¿Cómo cruzas la plaza?</h3>
+      <p class="jdialog__why">Las dos opciones cuestan. El mundo te tratará distinto.</p>
+      <div class="jdialog__choices">
+        <button type="button" class="jchoice jchoice--a" data-choice="pintarse"><kbd>1</kbd><b>Pintarme con talco</b><span>+ Las cámaras no te ven</span><span>− Ya eres contrabandista</span></button>
+        <button type="button" class="jchoice jchoice--b" data-choice="mascara"><kbd>2</kbd><b>Máscara legal</b><span>+ Pasas sin problema</span><span>− Quedas registrado</span></button>
+      </div>
+    </div>
+
+    <div class="jsheet" id="j-helppanel" hidden>
+      <div class="jsheet__in">
+        <p class="jk">Ayuda</p>
+        <h2>Cómo leer el nivel</h2>
+        <ul class="jlegend">
+          <li><i style="--c:#ff4a3a"></i><b>Etiqueta roja</b> pista</li>
+          <li><i style="--c:#f2c230"></i><b>Etiqueta amarilla</b> algo para examinar</li>
+          <li><i style="--c:#46d6e6"></i><b>Etiqueta cian</b> dato de Pasto real</li>
+          <li><i style="--c:#4f8fe0"></i><b>Azul</b> decisión</li>
+          <li><i style="--c:#2e8b57"></i><b>Verde</b> salida abierta</li>
+          <li><i style="--c:#7fe9f5"></i><b>Luz cian que gira</b> el Ojo de Atriz: cruza por la sombra</li>
+        </ul>
+        <h3>Controles</h3>
+        <dl class="jkeys" id="j-keys2"></dl>
+        <div class="jsheet__actions"><button type="button" class="tarp-plate" id="j-help-close">Seguir jugando</button></div>
+      </div>
+    </div>
+
+    <div class="jsheet jend" id="j-end" hidden>
+      <div class="jsheet__in">
+        <p class="jk">Informe de playtest</p>
+        <h2 id="j-end-title">Saliste al páramo</h2>
+        <ol class="jend__ruta" id="j-end-ruta" aria-label="Tus 9 lecciones"></ol>
+        <ul class="jend__triada" id="j-end-triada"></ul>
+        <dl class="jend__metrics" id="j-metrics"></dl>
+        <p class="jend__read" id="j-read"></p>
+        <div id="j-story-wrap"><h3>Tu storyboard</h3><div class="juego__story" id="j-story"></div></div>
+        <div class="jsheet__actions">
+          <button type="button" class="tarp-plate" id="j-again">Jugar otra vez</button>
+          <button type="button" class="tarp-plate tarp-plate--paper" id="j-download" hidden>Descargar storyboard</button>
+          <button type="button" class="tarp-plate tarp-plate--paper" id="j-designer-view">Ver la capa de diseñador</button>
+          <button type="button" class="tarp-plate tarp-plate--blue" id="j-leave">Volver al recorrido</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="stick" id="stick" aria-hidden="true"><span class="stick__knob" id="stick-knob"></span></div>
+  </div>
+
+  <div class="sismo-rail" aria-hidden="true"><svg viewBox="0 0 24 1000" preserveAspectRatio="none"><path id="rail-path" d=""/><circle id="rail-dot" r="5" cx="12" cy="0"/></svg></div>
+
+  <script type="module" src="assets/js/site.js"></script>
+</body>
+</html>

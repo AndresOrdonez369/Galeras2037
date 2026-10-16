@@ -1,0 +1,1225 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>Galeras 2037 · Slides</title>
+  <meta name="description" content="Slides del taller Galeras 2037: del plano al mundo jugable. FICPA 2026.">
+  <meta name="theme-color" content="#171614">
+  <link rel="preload" href="../assets/fonts/bungee-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="../assets/fonts/atkinson-hyperlegible-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <link rel="stylesheet" href="../assets/css/slides.css">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' fill='%23171614'/%3E%3Cpath d='M3 27 L14 9 L16 11 L18 9 L29 27Z' fill='%23f26b1d'/%3E%3C/svg%3E">
+  <script type="importmap">{ "imports": { "three": "../vendor/three/three.module.min.js", "three/addons/": "../vendor/three/addons/" } }</script>
+</head>
+<body>
+<p class="rotate-hint"><svg viewBox="0 0 24 24" aria-hidden="true"><rect x="6" y="3" width="12" height="18" rx="2" fill="none" stroke="currentColor" stroke-width="2"/><path d="M3 9a9 9 0 0 1 4-6M21 15a9 9 0 0 1-4 6" fill="none" stroke="currentColor" stroke-width="2"/></svg>Gira el celular para leer las slides más grandes.</p>
+<div class="deck" id="deck">
+
+<!-- ===================== ZONA 1 · TRANSMISIÓN ===================== -->
+<section class="slide s-cover" id="transmision" data-zone="Transmisión" data-title="Portada">
+  <figure class="bg" data-img="p00-portada" data-alt="Pasto en 2037 al anochecer, con el Galeras humeante al fondo"></figure>
+  <div class="s-cover__title">
+    <p class="led">Transmisión en curso · FICPA 2026</p>
+    <h1><span class="paint-y">GALERAS</span> <span class="paint-r">2037</span></h1>
+    <p class="s-cover__sub">Del plano al mundo jugable</p>
+  </div>
+  <p class="s-cover__meta">Game design, level design y cine · Ciclo de Talleres Nuestro Talento · Andrés Ordóñez-Bolaños</p>
+  <aside class="notes">Se apagan las luces. Antes de esta slide, 3 minutos de la web en modo transmisión (tecla T en la página principal). No expliques nada todavía: deja que miren la ciudad aplanarse en su plano.</aside>
+</section>
+
+<section class="slide s-zone" data-zone="Transmisión" data-title="Zona 1 · Transmisión">
+  <figure class="bg" data-img="z1-transmision" data-alt="Plaza de Nariño en 2037: la estatua con su holograma, la catedral y la carroza"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 1 · 8:00 · 20 min</p>
+    <h2>Transmisión</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> entender a qué vinimos y con qué reglas se juega esta mañana.</p>
+  </div>
+  <aside class="notes">Bienvenida. Cuenta que la mañana completa está diseñada como un nivel de videojuego, pero no reveles todavía cómo. Eso se revela en el estreno.</aside>
+</section>
+
+<section class="slide s-quien" data-zone="Transmisión" data-title="Quién te habla">
+  <p class="led">Quién te habla</p>
+  <h2>Andrés Ordóñez&#8209;Bolaños</h2>
+  <p class="big">Lead Programmer y líder técnico de videojuegos AAA. Nariñense.</p>
+  <ul class="creditos">
+    <li><span>Ha trabajado con</span><b>Warner Bros. · Disney · Rockstar Games</b></li>
+    <li><span>Proyectos junto a</span><b>Epic Games · Wizards of the Coast</b></li>
+    <li class="creditos__top"><span>Lead Programmer</span><b>Raptor Heist</b><em>Nominado en The Game Awards 2025</em></li>
+    <li><span>Participó en</span><b>Steal an Egg · Dungeons &amp; Dragons · Orcs Must Die! By the Blade</b></li>
+    <li><span>Academia</span><b>MSc en Ciencias de la Computación · IEEE y Springer · profesor</b></li>
+    <li><span>Fundador</span><b>Realidades X</b></li>
+  </ul>
+  <aside class="notes">Máximo 3 minutos. No leas la lista: cuenta una sola historia concreta de cómo se trabaja en un estudio. Cierra con: "Hoy no vengo a enseñarles a programar. Vengo a enseñarles cómo piensa un estudio antes de gastar un peso".</aside>
+</section>
+
+<section class="slide s-statement s-statement--paper" data-zone="Transmisión" data-title="Planos para rodar planos">
+  <p class="s-statement__text">Hoy vamos a dibujar <em>planos</em> para rodar <em>planos</em>.</p>
+  <aside class="notes">Deja la frase sola unos segundos. Pregunta: "¿Qué significa plano?". Deja que respondan y luego pasa a la siguiente.</aside>
+</section>
+
+<section class="slide s-duo" data-zone="Transmisión" data-title="Plano y plano">
+  <div class="s-duo__col">
+    <p class="led">Plano · mapa</p>
+    <h3>La planta</h3>
+    <p>Un espacio visto desde arriba: muros, recorridos, puertas, decisiones. Es lo que dibuja un <b>level designer</b>.</p>
+  </div>
+  <figure class="s-duo__img" data-img="c01-plano-plano" data-alt="El plano de papel del nivel con muros, pistas y cámaras"></figure>
+  <div class="s-duo__col">
+    <p class="led">Plano · toma</p>
+    <h3>El encuadre</h3>
+    <p>Lo que la cámara ve entre dos cortes. Es la unidad del lenguaje del <b>cine</b>.</p>
+  </div>
+  <aside class="notes">El taller vive en la frontera entre las dos palabras. Hoy un mismo papel será mapa, tablero de juego y planta de rodaje.</aside>
+</section>
+
+<section class="slide s-list s-list--tesis" data-zone="Transmisión" data-title="La tesis">
+  <h2>La tesis</h2>
+  <ol class="tesis">
+    <li><b>El cine</b> organiza planos.</li>
+    <li><b>El game design</b> organiza experiencias.</li>
+    <li><b>El level design</b> organiza el descubrimiento.</li>
+    <li><b>El liderazgo técnico</b> convierte una visión compleja en algo realizable.</li>
+  </ol>
+  <aside class="notes">Esta es la tesis de la propuesta aprobada por el FICPA. Cada zona del taller trabaja una de estas cuatro capas.</aside>
+</section>
+
+<section class="slide s-statement s-statement--paper s-500" data-zone="Transmisión" data-title="¿Por qué 2037?">
+  <p class="led">¿Por qué 2037?</p>
+  <p class="s-statement__text">En 2037, Pasto cumple <em>500 años</em>.</p>
+  <p class="s-statement__sub">Según la fecha más citada, San Juan de Pasto fue fundada en 1537. Hoy imaginamos ese aniversario: ¿qué ciudad queremos que exista ese día y cuál tememos?</p>
+  <aside class="notes">Un minuto. Dilo con calma y deja la pregunta abierta: no la respondas. Aclara que hay historiadores que proponen otra fecha cercana; lo que importa es que 2037 no es un año al azar sino un aniversario. Todo el taller construye una respuesta posible a esa pregunta.</aside>
+</section>
+
+<section class="slide s-ruta" data-zone="Transmisión" data-title="El recorrido de hoy">
+  <p class="led">El recorrido de hoy · 4 h 30 min</p>
+  <h2>Siete zonas, un solo proyecto</h2>
+  <ol class="ruta">
+    <li><b>01</b><strong>Transmisión</strong><span>20 min</span><em>A qué vinimos</em></li>
+    <li><b>02</b><strong>Diseñar la experiencia</strong><span>40 min</span><em>Ficha de Experiencia</em></li>
+    <li><b>03</b><strong>Pasto 2037</strong><span>45 min</span><em>Constitución del Mundo</em></li>
+    <li class="ruta__pausa"><b>II</b><strong>Refugio</strong><span>15 min</span><em>Pausa</em></li>
+    <li><b>04</b><strong>El espacio escribe</strong><span>50 min</span><em>Plano de Nivel A3</em></li>
+    <li><b>05</b><strong>Niebla de guerra</strong><span>30 min</span><em>Versión 2 del plano</em></li>
+    <li><b>06</b><strong>Vertical slice</strong><span>45 min</span><em>Teaser de 30 segundos</em></li>
+    <li><b>07</b><strong>Estreno</strong><span>25 min</span><em>Pitch de 2 minutos</em></li>
+  </ol>
+  <p class="ruta__pie">Cada zona termina con algo sobre la mesa. Al final, todo junto es un mundo listo para filmarse.</p>
+  <aside class="notes">Un minuto. Recorre la línea con el dedo, de izquierda a derecha: "Cada zona deja algo en la mesa; nada se bota". Señala el Refugio: hay pausa. No expliques la curva de tensión: es la sorpresa del final.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Transmisión" data-title="El método de un estudio">
+  <figure class="s-split__img" data-img="c02-estudio-aaa" data-alt="El nivel visto desde arriba, como en el editor de un estudio"></figure>
+  <div class="s-split__text">
+    <p class="led">Cómo piensa un estudio AAA</p>
+    <h2>Probar antes de producir</h2>
+    <ol class="steps">
+      <li>Formular la experiencia</li>
+      <li>Prototipar en papel</li>
+      <li>Probar con otros</li>
+      <li>Iterar con evidencia</li>
+      <li>Producir solo lo que fortalece la visión</li>
+    </ol>
+    <p class="quiet">Una mala idea descubierta en papel cuesta una hora. Descubierta en producción cuesta meses.</p>
+    <p class="analogia"><b>Es como…</b> probar la sopa antes de servirla a cien invitados.</p>
+  </div>
+  <aside class="notes">Aquí va tu experiencia real de estudio: el grey box antes del arte, el vertical slice antes de la producción completa. Conecta con el presupuesto de un cortometraje.</aside>
+</section>
+
+<section class="slide s-list" data-zone="Transmisión" data-title="Reglas del juego">
+  <h2>Reglas del juego</h2>
+  <ul class="rules">
+    <li><b>Células de 4 a 5 personas.</b> Cada una construye un solo proyecto toda la mañana; no hay ejercicios desechables.</li>
+    <li><b>Roles que rotan:</b> Dirección · Game Design · Level Design · Producción · Curaduría.</li>
+    <li><b>Toda idea se prueba en papel.</b> Si no funciona en papel, no funcionará en pantalla.</li>
+    <li><b>Observar sin explicar.</b> Cuando otro juega tu escena, tú callas y anotas.</li>
+    <li><b>La IA asiste; la autoría decide.</b> Su uso es opcional y se declara.</li>
+  </ul>
+  <aside class="notes">Reparte las tarjetas de rol. La persona de Curaduría lleva el tiempo y hace las preguntas incómodas.</aside>
+</section>
+
+<section class="slide s-semaforo" data-zone="Transmisión" data-title="Semáforo del Galeras">
+  <h2>Semáforo del Galeras</h2>
+  <p class="big">Cada célula tiene tres tarjetas. Levanten la que corresponda, en cualquier momento.</p>
+  <div class="semaforo">
+    <div class="semaforo__card semaforo__card--g"><b>Verde</b><span>Vamos bien</span></div>
+    <div class="semaforo__card semaforo__card--y"><b>Amarillo</b><span>Tenemos una duda</span></div>
+    <div class="semaforo__card semaforo__card--r"><b>Rojo</b><span>Estamos bloqueados</span></div>
+  </div>
+  <aside class="notes">Son los mismos niveles de alerta con los que Pasto convive por el volcán. Te permiten leer el salón de un vistazo sin interrumpir.</aside>
+</section>
+
+<section class="slide s-question" data-zone="Transmisión" data-title="Pregunta semilla">
+  <p class="led">Conversación · 7 min</p>
+  <p class="s-question__q">¿Cuál es el último lugar de Pasto donde sintieron <em>miedo</em>, <em>asombro</em> o que estaban <em>perdidos</em>?</p>
+  <aside class="notes">Anota las respuestas en el tablero, agrupadas por emoción. Las vas a recuperar en la Zona 3 como material de mundo y en la Zona 4 como lugares para mapear.</aside>
+</section>
+
+<!-- ===================== ZONA 2 · EXPERIENCIA ===================== -->
+<section class="slide s-zone s-zone--blue" id="experiencia" data-zone="Experiencia" data-title="Zona 2 · Diseñar la experiencia">
+  <figure class="bg" data-img="z2-experiencia" data-alt="Entrada al mercado del Potrerillo bajo lonas con luces LED"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 2 · 8:20 · 40 min</p>
+    <h2>Diseñar la experiencia antes de la historia</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> una frase que diga qué sentirá, descubrirá y decidirá tu público.</p>
+  </div>
+  <aside class="notes">Primero 6 minutos de historia, luego conceptos, la biopsia, la Célula 0 y la práctica.</aside>
+</section>
+
+<section class="slide s-timeline" data-zone="Experiencia" data-title="Historia del cine: aprender a mostrar">
+  <header><p class="led">Historia del cine en seis momentos</p><h2>El cine aprende a mostrar</h2></header>
+  <ol class="timeline">
+    <li><time>1895</time><b>Hermanos Lumière</b><span>Un tren llega a la estación y el cine nace como atracción.</span></li>
+    <li><time>1902</time><b>Viaje a la Luna</b><span>Méliès inventa mundos imposibles con trucos de cámara.</span></li>
+    <li><time>1920s</time><b>Kuleshov</b><span>El sentido de una imagen depende de la que viene al lado.</span></li>
+    <li><time>1925</time><b>El acorazado Potemkin</b><span>Eisenstein: el montaje choca imágenes para producir ideas.</span></li>
+    <li><time>1941</time><b>Ciudadano Kane</b><span>La profundidad de campo deja que el público elija dónde mirar.</span></li>
+    <li><time>1954</time><b>La ventana indiscreta</b><span>Hitchcock convierte al espectador en vigilante.</span></li>
+  </ol>
+  <figure class="s-timeline__img" data-img="c28-cine" data-alt="Toma de cine en 2.39:1 en la Plaza de Nariño"></figure>
+  <p class="analogia"><b>Es como…</b> aprender a contar un chiste: el cine aprendió cuándo mostrar cada cosa.</p>
+  <aside class="notes">El cine pasó 60 años aprendiendo a dirigir la mirada del público sin dejarlo moverse. Los videojuegos heredan todo eso y le suman algo que el cine no tenía: dejar que el público actúe.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Experiencia" data-title="El efecto Kuleshov">
+  <figure class="s-split__img" data-img="c26-kuleshov" data-alt="La Calle Real con el camino crítico marcado en naranja"></figure>
+  <div class="s-split__text">
+    <p class="led">Lev Kuleshov · década de 1920</p>
+    <h2>El contexto cambia el significado</h2>
+    <p>El mismo rostro de un actor, montado junto a un plato de sopa, un ataúd o una niña, parece expresar hambre, duelo o ternura.</p>
+    <p class="big">En un nivel pasa lo mismo: la misma acción, caminar por una calle, significa otra cosa si al fondo hay un escáner.</p>
+    <p class="quiet">El level designer hace montaje con el espacio.</p>
+    <p class="analogia"><b>Es como…</b> la misma canción en un matrimonio o en un funeral.</p>
+  </div>
+  <aside class="notes">Pregunta: ¿qué cambia en la Calle Real cuando aparece el arco del Ojo de Atriz? Nada en la calle; todo en lo que siente quien la recorre.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Experiencia" data-title="Suspenso: la bomba bajo la mesa">
+  <figure class="s-split__img" data-img="c27-suspenso" data-alt="El haz del Ojo de Atriz barriendo la plaza desde la torre"></figure>
+  <div class="s-split__text">
+    <p class="led">Hitchcock, en sus conversaciones con Truffaut</p>
+    <h2>Sorpresa o suspenso</h2>
+    <p><b>Sorpresa:</b> una bomba explota sin aviso. Quince segundos de susto.</p>
+    <p><b>Suspenso:</b> el público ve la bomba bajo la mesa antes que los personajes. Quince minutos de tensión.</p>
+    <p class="big">En los juegos se llama <em>telegrafiar</em>: la amenaza se ve antes de llegar a ella.</p>
+    <p class="analogia"><b>Es como…</b> el trueno antes del aguacero: ya sabes lo que viene.</p>
+  </div>
+  <aside class="notes">En Galeras 2037, el escáner y el haz de la catedral se ven desde lejos a propósito. El jugador decide con información; eso es suspenso jugable.</aside>
+</section>
+
+<section class="slide s-timeline" data-zone="Experiencia" data-title="Historia I: los juegos aprenden a existir">
+  <header><p class="led">Historia exprés · I</p><h2>Los juegos aprenden a existir</h2></header>
+  <ol class="timeline">
+    <li><time>1958</time><b>Tennis for Two</b><span>Un osciloscopio de laboratorio se vuelve cancha.</span></li>
+    <li><time>1962</time><b>Spacewar!</b><span>Estudiantes del MIT inventan el duelo en una computadora.</span></li>
+    <li><time>1972</time><b>Pong</b><span>Una regla que se entiende en un segundo.</span></li>
+    <li><time>1978</time><b>Space Invaders</b><span>La amenaza baja y acelera: la tensión se vuelve sistema.</span></li>
+    <li><time>1980</time><b>Pac-Man</b><span>Cada fantasma tiene su propia personalidad.</span></li>
+    <li><time>1985</time><b>Super Mario Bros.</b><span>El mundo 1-1 enseña a jugar sin una sola palabra.</span></li>
+  </ol>
+  <figure class="s-timeline__img" data-img="c03-arcade-mercado" data-alt="Puestos del mercado con lonas y tiras LED"></figure>
+  <aside class="notes">Detente en Mario 1-1: el primer Goomba viene hacia ti y aprendes a saltar porque el espacio te obliga. Eso es level design como pedagogía.</aside>
+</section>
+
+<section data-opcional class="slide s-timeline" data-zone="Experiencia" data-title="Historia II: los juegos aprenden del cine">
+  <header><p class="led">Historia exprés · II</p><h2>Los juegos aprenden del cine</h2></header>
+  <ol class="timeline timeline--dense">
+    <li><time>1993</time><b>Myst</b><span>Un mundo para mirar y descifrar.</span></li>
+    <li><time>1993</time><b>Doom</b><span>El mapa como arquitectura de la tensión.</span></li>
+    <li><time>1998</time><b>Half-Life</b><span>La historia ocurre sin quitarte el control.</span></li>
+    <li><time>1998</time><b>Metal Gear Solid</b><span>Dirección de cámara y actuación de voz.</span></li>
+    <li><time>2001</time><b>ICO</b><span>El vacío como emoción. Su portada homenajea a De Chirico.</span></li>
+    <li><time>2004</time><b>Half-Life 2</b><span>Una ciudad distópica que se lee sola.</span></li>
+    <li><time>2005</time><b>Shadow of the Colossus</b><span>El paisaje como protagonista.</span></li>
+    <li><time>2007</time><b>BioShock</b><span>Una utopía fracasada contada por sus ruinas.</span></li>
+  </ol>
+  <aside class="notes">Half-Life 2 y BioShock son clave para la Zona 3: dos distopías que se entienden caminando, sin que nadie las explique.</aside>
+</section>
+
+<section class="slide s-timeline" data-zone="Experiencia" data-title="Historia III: el cine aprende de los juegos">
+  <header><p class="led">Historia exprés · III</p><h2>Y el cine aprende de los juegos</h2></header>
+  <ol class="timeline timeline--dense">
+    <li><time>1982</time><b>Tron</b><span>El cine entra a la máquina.</span></li>
+    <li><time>1998</time><b>Corre, Lola, corre</b><span>Morir y reintentar como estructura.</span></li>
+    <li><time>2012</time><b>Journey</b><span>Una montaña como único destino.</span></li>
+    <li><time>2013</time><b>The Last of Us</b><span>Cine y juego en el mismo gesto.</span></li>
+    <li><time>2014</time><b>Al filo del mañana</b><span>El bucle de respawn llevado a película.</span></li>
+    <li><time>2016</time><b>Inside</b><span>Ni una palabra, todo se entiende.</span></li>
+    <li><time>2019</time><b>Death Stranding</b><span>Actores de cine dentro de un mundo jugable.</span></li>
+    <li><time>2023</time><b>UEFN</b><span>Cualquiera puede construir mundos dentro de Fortnite.</span></li>
+    <li><time>2025</time><b>Raptor Heist</b><span>Nominado en The Game Awards. Hecho en UEFN.</span></li>
+  </ol>
+  <aside class="notes">Cierra con Raptor Heist: tu propio trabajo como prueba de que este cruce existe hoy y no es teoría.</aside>
+</section>
+
+<section data-opcional class="slide s-timeline s-timeline--red" data-zone="Experiencia" data-title="Cine y juegos se roban ideas">
+  <header><p class="led">Préstamos</p><h2>Cine y juegos se roban ideas</h2></header>
+  <ol class="timeline timeline--dense">
+    <li><time>1983</time><b>Dragon's Lair</b><span>Un juego hecho con animación de cine: la película interactiva.</span></li>
+    <li><time>1999</time><b>Matrix</b><span>El bullet time pasa del cine a Max Payne (2001).</span></li>
+    <li><time>2003</time><b>Red vs Blue</b><span>Machinima: una serie filmada dentro de Halo.</span></li>
+    <li><time>2015</time><b>Hardcore Henry</b><span>Una película entera en primera persona.</span></li>
+    <li><time>2018</time><b>Bandersnatch</b><span>Netflix estrena cine donde el público decide.</span></li>
+    <li><time>2019</time><b>The Mandalorian</b><span>Fondos renderizados en tiempo real con un motor de juego.</span></li>
+    <li><time>2023</time><b>The Last of Us</b><span>El juego llega a la televisión con su puesta en escena.</span></li>
+  </ol>
+  <aside class="notes">Hoy la frontera es una herramienta compartida: el motor en tiempo real. El mismo archivo sirve para jugar, para previsualizar y para rodar.</aside>
+</section>
+
+<section class="slide s-list s-dicc" data-zone="Experiencia" data-title="El diccionario">
+  <h2>El diccionario del taller</h2>
+  <dl class="dicc-s">
+    <div><dt>Guion</dt><dd>Reglas y sistemas</dd></div>
+    <div><dt>Puesta en escena</dt><dd>Level design</dd></div>
+    <div><dt>Planta de cámara</dt><dd>Mapa del nivel</dd></div>
+    <div><dt>Storyboard</dt><dd>Greybox</dd></div>
+    <div><dt>Plano de ubicación</dt><dd>Hito</dd></div>
+    <div><dt>Fuera de campo</dt><dd>Niebla de guerra</dd></div>
+    <div><dt>Montaje</dt><dd>Ritmo del nivel</dd></div>
+    <div><dt>Proyección de prueba</dt><dd>Playtest</dd></div>
+    <div><dt>Teaser</dt><dd>Vertical slice</dd></div>
+    <div><dt>Set de rodaje</dt><dd>Motor en tiempo real</dd></div>
+  </dl>
+  <aside class="notes">Esta slide vuelve a aparecer en la web. Pide que cada célula use las dos palabras: la de cine y la de juego.</aside>
+</section>
+
+
+<section data-opcional class="slide s-split" data-zone="Experiencia" data-title="El círculo mágico">
+  <figure class="s-split__img" data-img="c04-circulo-magico" data-alt="Los anillos holográficos alrededor de la estatua de Nariño"></figure>
+  <div class="s-split__text">
+    <p class="led">Filosofía del juego</p>
+    <h2>El círculo mágico</h2>
+    <p><b>Johan Huizinga</b> (<i>Homo Ludens</i>, 1938): jugar crea un espacio aparte, con reglas propias, donde las cosas significan otra cosa.</p>
+    <p><b>Bernard Suits</b> (1978): jugar es el intento voluntario de superar obstáculos innecesarios.</p>
+    <p class="quiet">Una sala de cine también es un círculo mágico: apagamos las luces y aceptamos otras reglas.</p>
+    <p class="analogia"><b>Es como…</b> una cancha de fútbol: adentro, tocar el balón con la mano es falta.</p>
+  </div>
+  <aside class="notes">Pregunta: ¿qué obstáculo innecesario aceptamos cuando vemos una película de suspenso? (No saber, esperar, no poder intervenir.)</aside>
+</section>
+
+<section class="slide s-list" data-zone="Experiencia" data-title="El verbo">
+  <h2>El verbo</h2>
+  <p class="big">¿Qué <em>hace</em> quien vive la experiencia? Una sola acción, la central.</p>
+  <dl class="verbs">
+    <div><dt>Saltar</dt><dd>Super Mario Bros.</dd></div>
+    <div><dt>Esconderse</dt><dd>Inside</dd></div>
+    <div><dt>Caminar hacia</dt><dd>Journey</dd></div>
+    <div><dt>Proteger</dt><dd>Children of Men</dd></div>
+    <div><dt>Sospechar</dt><dd>Cualquier buen thriller</dd></div>
+  </dl>
+  <p class="quiet">En el cine nadie presiona botones, pero el público ejecuta verbos mentales: sospechar, anticipar, elegir de qué lado está.</p>
+  <p class="analogia"><b>Es como…</b> el verbo de un deporte: en el fútbol, patear; en el baloncesto, encestar.</p>
+  <aside class="notes">Pide a cada célula que diga en voz alta el verbo de su película favorita.</aside>
+</section>
+
+<section class="slide s-loop" data-zone="Experiencia" data-title="El bucle">
+  <h2>El bucle de la experiencia</h2>
+  <div class="loop">
+    <span class="loop__n loop__n--1">Atención</span>
+    <span class="loop__n loop__n--2">Interpretación</span>
+    <span class="loop__n loop__n--3">Decisión</span>
+    <span class="loop__n loop__n--4">Consecuencia</span>
+    <svg viewBox="0 0 600 600" aria-hidden="true"><circle cx="300" cy="300" r="220"/><path d="M300 80 l18 -12 M300 80 l18 12"/></svg>
+  </div>
+  <p class="s-loop__note">En un buen juego, este bucle gira cada pocos segundos. En una buena escena, también.</p>
+  <p class="analogia"><b>Es como…</b> cruzar una calle: miras, calculas, decides y llegas… o no.</p>
+  <aside class="notes">Ejemplo: algo se mueve en la oscuridad (atención) → ¿es una amenaza? (interpretación) → corro o me escondo (decisión) → me ve o no me ve (consecuencia).</aside>
+</section>
+
+<section class="slide s-list" data-zone="Experiencia" data-title="Pilares">
+  <h2>Pilares de diseño</h2>
+  <p class="big">Tres a cinco frases que no se negocian. Toda decisión se mide contra ellas.</p>
+  <ul class="pillars">
+    <li>La experiencia precede a la herramienta.</li>
+    <li>Pasto no es un decorado.</li>
+    <li>Toda tecnología tiene un costo.</li>
+    <li>Prototipar antes de producir.</li>
+    <li>La IA asiste; la autoría decide.</li>
+  </ul>
+  <p class="quiet">Estos son los pilares de este taller. Cada célula escribirá los suyos.</p>
+  <aside class="notes">Analogía: es como la receta de la abuela: hay ingredientes que no se negocian. Muestra cómo un pilar elimina ideas: "¿Esto hace que Pasto sea decorado? Entonces se corta".</aside>
+</section>
+
+<section class="slide s-biopsia" data-zone="Experiencia" data-title="Biopsia comparada">
+  <header><p class="led">Biopsia comparada · 6 min</p><h2>Una escena de cine, una de juego</h2></header>
+  <div class="biopsia">
+    <div class="biopsia__col"><p class="tag">Cine</p><h3>Children of Men</h3><p>Alfonso Cuarón, 2006. Plano secuencia de la emboscada en el auto.</p></div>
+    <div class="biopsia__col"><p class="tag">Juego</p><h3>Half-Life 2</h3><p>Valve, 2004. Llegada a City 17.</p></div>
+  </div>
+  <ul class="biopsia__q"><li>¿Qué <b>siente</b> el público?</li><li>¿Qué <b>descubre</b>?</li><li>¿Qué <b>decide</b>, o qué decide el personaje por él?</li></ul>
+  <aside class="notes">Reproduce los dos fragmentos (traerlos descargados, menos de 2 minutos cada uno, uso educativo). Pregunta en voz alta y anota en dos columnas.</aside>
+</section>
+
+<section class="slide s-hipotesis" data-zone="Experiencia" data-title="Hipótesis de experiencia">
+  <p class="led">La frase que lo ordena todo</p>
+  <p class="s-hipotesis__text">Queremos que el público<br><b>sienta</b>&nbsp;<u></u><br>mientras <b>descubre</b>&nbsp;<u></u><br>y <b>decide</b>&nbsp;<u></u>.</p>
+  <aside class="notes">Esta frase reemplaza a la pregunta "¿qué historia contamos?". La historia sale después.</aside>
+</section>
+
+<section class="slide s-celula" data-zone="Experiencia" data-title="Célula 0 · Ficha">
+  <figure class="s-celula__img" data-img="c05-celula0-rostro" data-alt="La carroza del carnaval, mitad armazón y mitad pintada"></figure>
+  <div class="s-celula__sheet">
+    <p class="tag">Célula 0 · ejemplo</p>
+    <h2>Contrabando de Rostros</h2>
+    <p class="sheet-line">Queremos que el público sienta <mark>vértigo</mark> mientras descubre que <mark>su propio rostro es contrabando</mark> y decide <mark>si pintarse para desaparecer</mark>.</p>
+    <p class="sheet-line"><b>Verbo:</b> ocultarse.</p>
+    <p class="sheet-line"><b>Transformación:</b> del miedo a la complicidad.</p>
+  </div>
+  <aside class="notes">Yo hago: llena la ficha frente a ellos y piensa en voz alta. En 2037, el talco y la pintura de Negros y Blancos sirven para engañar al reconocimiento facial.</aside>
+</section>
+
+<section class="slide s-mission" data-zone="Experiencia" data-title="Misión 2" data-timer="15">
+  <p class="led">Misión · Zona 2</p>
+  <h2>Ficha de Experiencia</h2>
+  <ol class="mission-steps">
+    <li>Completen la frase: sentir · descubrir · decidir.</li>
+    <li>Escojan <b>un</b> verbo central.</li>
+    <li>Escriban la transformación emocional: de ___ a ___.</li>
+  </ol>
+  <p class="done"><b>Terminado cuando:</b> alguien de otra célula lee la ficha y explica en 15 segundos qué se siente y qué se hace.</p>
+  <div class="timer" aria-live="polite"><span class="timer__t">15:00</span><span class="timer__hint">S para iniciar</span></div>
+  <aside class="notes">Recorre las mesas. Si una célula se bloquea, ofrécele dos emociones y que elija una.</aside>
+</section>
+
+<!-- ===================== ZONA 3 · DISTOPÍAS ===================== -->
+<section class="slide s-zone s-zone--red" id="distopias" data-zone="Distopías" data-title="Zona 3 · Pasto 2037">
+  <figure class="bg" data-img="z3-distopias" data-alt="La catedral de Pasto convertida en torre de vigilancia, vista en contrapicado"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 3 · 9:00 · 45 min</p>
+    <h2>Pasto 2037: distopías, cyberpunk y transhumanismo</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> las reglas que hacen que este futuro solo pueda ocurrir aquí.</p>
+  </div>
+  <aside class="notes">La zona más filosófica. Cada idea tiene una imagen, una frase y una pregunta. Lo demás queda en el archivo profundo.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Distopías" data-title="Utopía, distopía, heterotopía">
+  <figure class="s-split__img" data-img="c06-utopia-distopia" data-alt="Desde el páramo, la puerta de la chakana y la ciudad al fondo"></figure>
+  <div class="s-split__text">
+    <h2>Tres lugares que no existen</h2>
+    <dl class="defs">
+      <div><dt>Utopía</dt><dd>Tomás Moro, 1516. En griego, "ningún lugar": la sociedad perfecta.</dd></div>
+      <div><dt>Distopía</dt><dd>John Stuart Mill usa la palabra en 1868: el lugar donde lo perfecto salió mal.</dd></div>
+      <div><dt>Heterotopía</dt><dd>Michel Foucault, 1967: lugares reales que funcionan con otras reglas, como el cine, el cementerio o el carnaval.</dd></div>
+    </dl>
+  </div>
+  <aside class="notes">El Carnaval de Negros y Blancos es una heterotopía: durante unos días se suspenden las jerarquías. Por eso es tan buen material distópico.</aside>
+</section>
+
+<section class="slide s-statement" data-zone="Distopías" data-title="Una distopía es una regla">
+  <p class="s-statement__text">Una distopía es una regla llevada hasta su <em>última consecuencia</em>.</p>
+  <aside class="notes">Esto es game design puro: una regla, un sistema y una consecuencia. Por eso las distopías se juegan tan bien.</aside>
+</section>
+
+<section data-opcional class="slide s-grid" data-zone="Distopías" data-title="Las grandes distopías">
+  <h2>Las grandes distopías</h2>
+  <div class="grid3">
+    <div><time>1927</time><b>Metropolis</b><span>Fritz Lang. Una ciudad vertical que divide arriba y abajo.</span></div>
+    <div><time>1920</time><b>Nosotros</b><span>Yevgueni Zamiatin. Casas de vidrio y personas numeradas.</span></div>
+    <div><time>1932</time><b>Un mundo feliz</b><span>Aldous Huxley. Placer como forma de control.</span></div>
+    <div><time>1949</time><b>1984</b><span>George Orwell. La verdad se reescribe cada día.</span></div>
+    <div><time>1953</time><b>Fahrenheit 451</b><span>Ray Bradbury. La memoria se quema.</span></div>
+    <div><time>1985</time><b>El cuento de la criada</b><span>Margaret Atwood. El cuerpo como territorio político.</span></div>
+  </div>
+  <p class="quiet">Pregunta para cada una: ¿cuál es la regla y cuál su costo humano?</p>
+  <aside class="notes">No leas todo. Escoge dos y extrae la regla. Ejemplo: en Fahrenheit 451 la regla es "los libros están prohibidos"; el costo, la memoria.</aside>
+</section>
+
+<section class="slide s-timeline s-timeline--red" data-zone="Distopías" data-title="Cyberpunk">
+  <header><p class="led">High tech, low life</p><h2>Cyberpunk</h2></header>
+  <ol class="timeline">
+    <li><time>1968</time><b>¿Sueñan los androides con ovejas eléctricas?</b><span>Philip K. Dick. ¿Qué nos hace humanos?</span></li>
+    <li><time>1982</time><b>Blade Runner</b><span>Ridley Scott, con el diseño de Syd Mead y la influencia de Moebius.</span></li>
+    <li><time>1984</time><b>Neuromante</b><span>William Gibson populariza el ciberespacio.</span></li>
+    <li><time>1988</time><b>Akira</b><span>Neo-Tokio, juventud y poder.</span></li>
+    <li><time>1995</time><b>Ghost in the Shell</b><span>Una mente en un cuerpo fabricado.</span></li>
+    <li><time>1999</time><b>Matrix</b><span>La realidad como simulación.</span></li>
+  </ol>
+  <blockquote class="pull">"La calle encuentra sus propios usos para las cosas." <cite>William Gibson, 1982</cite></blockquote>
+  <aside class="notes">La frase de Gibson es la clave de la siguiente slide: el cyberpunk no trata de la tecnología de lujo sino de la que se repara y se revende en la calle.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Distopías" data-title="Cyberpunk del Sur">
+  <figure class="s-split__img" data-img="c08-cyberpunk-sur" data-alt="Rótulos pintados a mano y pantallas LED en el mercado"></figure>
+  <div class="s-split__text">
+    <p class="led">Ciencia ficción desde aquí</p>
+    <h2>Cyberpunk del Sur</h2>
+    <p class="big">¿Y si el futuro no se pareciera a Tokio sino a Pasto?</p>
+    <p><b>Sleep Dealer</b> (Alex Rivera, 2008): trabajadores mexicanos operan robots en Estados Unidos sin cruzar la frontera. Su cuerpo se queda; su trabajo emigra.</p>
+    <p>Aquí la tecnología no llega reluciente: se repara, se pinta a mano, se revende en el mercado.</p>
+  </div>
+  <aside class="notes">La estética de la web y de las slides sale de aquí: rótulos pintados, lonas y pantallas LED piratas, en lugar del neón importado.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Distopías" data-title="Futurismo andino">
+  <figure class="s-split__img" data-img="c22-cuy-gigante" data-alt="Un cuy gigante de carnaval, con propulsores y ruana tejida, vuela sobre el mercado"></figure>
+  <div class="s-split__text">
+    <p class="led">Futurismo andino</p>
+    <h2>El cuy también vuela</h2>
+    <p class="big">El futuro se cree cuando conserva algo del pasado.</p>
+    <ul class="ticks">
+      <li><b>El cuy</b>, plato de fiesta en Nariño, ahora reparte paquetes con propulsores.</li>
+      <li><b>Las carrozas</b> del Carnaval se vuelven globos gigantes que cruzan la ciudad.</li>
+      <li><b>El barniz y las ruanas</b> se venden con luz LED, en los kioscos de siempre.</li>
+    </ul>
+    <p class="quiet">¿Qué animal, comida u oficio de tu barrio sigue existiendo en 2037? ¿Qué le cambió la tecnología?</p>
+  </div>
+  <aside class="notes">Es la slide que conecta lo transhumanista con lo regional. El humor es intencional: un cuy con propulsores hace sonreír y, al mismo tiempo, dice que en este futuro la tecnología se mezcló con lo local en vez de borrarlo. Pide a cada célula una respuesta rápida a la pregunta: será material para su Constitución del Mundo.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Distopías" data-title="Transhumanismo">
+  <figure class="s-split__img" data-img="c09-transhumano-mopa" data-alt="Rótulos del mercado: implantes, barniz de Pasto y memorias"></figure>
+  <div class="s-split__text">
+    <h2>Transhumanismo</h2>
+    <dl class="defs">
+      <div><dt>1957</dt><dd>Julian Huxley populariza la palabra: la especie puede trascenderse a sí misma con ciencia y tecnología.</dd></div>
+      <div><dt>1960</dt><dd>Manfred Clynes y Nathan Kline proponen el "cyborg": un organismo ampliado para sobrevivir en el espacio.</dd></div>
+      <div><dt>1985</dt><dd>Donna Haraway, <i>Manifiesto cyborg</i>: ya somos híbridos de máquina y organismo.</dd></div>
+    </dl>
+    <p class="big">¿Quién puede pagar la mejora? ¿Quién se queda afuera?</p>
+  </div>
+  <aside class="notes">Pilar del taller: toda tecnología tiene un costo. El transhumanismo se aborda desde sus consecuencias humanas y políticas.</aside>
+</section>
+
+<section data-opcional class="slide s-duo s-duo--philo" data-zone="Distopías" data-title="Lentes filosóficos I">
+  <div class="s-duo__col">
+    <figure class="s-duo__thumb" data-img="c10-caverna" data-alt="Callejón oscuro con una luz de velas al fondo"></figure>
+    <p class="led">Platón · siglo IV a. C.</p>
+    <h3>La caverna</h3>
+    <p>Prisioneros que solo ven sombras y las creen reales. Es la primera realidad virtual de la filosofía.</p>
+  </div>
+  <div class="s-duo__col">
+    <figure class="s-duo__thumb" data-img="c07-panoptico" data-alt="El haz del Ojo de Atriz barriendo la plaza desde la torre"></figure>
+    <p class="led">Bentham 1791 · Foucault 1975</p>
+    <h3>El panóptico</h3>
+    <p>Una torre desde la que se puede mirar todo sin ser visto. Al final, los vigilados se vigilan solos.</p>
+  </div>
+  <aside class="notes">Pregunta: ¿qué es hoy la caverna? ¿Y qué es hoy la torre? (Las pantallas; las cámaras y los algoritmos.)</aside>
+</section>
+
+<section data-opcional class="slide s-grid" data-zone="Distopías" data-title="Lentes filosóficos II">
+  <h2>Cuatro lentes más</h2>
+  <div class="grid2">
+    <div><b>Jean Baudrillard</b><span>Simulacros y simulación, 1981. La copia que ya no tiene original. El libro aparece escondido dentro de Matrix.</span></div>
+    <div><b>Martin Heidegger</b><span>La pregunta por la técnica, 1954. La técnica no es solo una herramienta: es una forma de ver el mundo como recurso.</span></div>
+    <div><b>Pierre Lévy</b><span>¿Qué es lo virtual?, 1995. Lo virtual no se opone a lo real sino a lo actual: es una potencia.</span></div>
+    <div><b>Byung-Chul Han</b><span>Psicopolítica, 2014. El poder ya no prohíbe: seduce, y nos explotamos solos.</span></div>
+  </div>
+  <aside class="notes">Cada lente es una herramienta de worldbuilding: ¿qué simula tu mundo? ¿qué convierte en recurso? ¿qué potencia guarda? ¿cómo seduce el poder?</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Distopías" data-title="Otra forma de imaginar el futuro">
+  <figure class="s-split__img" data-img="c11-buen-vivir" data-alt="Frailejones del páramo frente a la silueta del Galeras"></figure>
+  <div class="s-split__text">
+    <p class="led">Desde los Andes</p>
+    <h2>Otra forma de imaginar el futuro</h2>
+    <p><b>Buen vivir</b> (<i>sumak kawsay</i>): vivir en equilibrio con la comunidad y el territorio. Está en la Constitución de Ecuador desde 2008.</p>
+    <p><b>Tiempo andino:</b> el tiempo no avanza en línea recta sino que vuelve. <i>Pachakuti</i>: el momento en que el mundo se voltea.</p>
+    <p class="quiet">Una distopía también es una advertencia. ¿Qué tendría que pasar para que Pasto 2037 no llegue?</p>
+  </div>
+  <aside class="notes">El contrapunto evita que la distopía se vuelva pesimismo decorativo. Pregunta por el solarpunk: la ciencia ficción que imagina futuros deseables.</aside>
+</section>
+
+<section class="slide s-list" data-zone="Distopías" data-title="Pasto como sistema">
+  <h2>Pasto no es un decorado</h2>
+  <p class="big">El territorio es regla, recurso y conflicto.</p>
+  <dl class="verbs verbs--wide">
+    <div><dt>El Galeras</dt><dd>Volcán activo de más de 4.000 m, vigilado desde Pasto por el Servicio Geológico Colombiano.</dd></div>
+    <div><dt>El Carnaval</dt><dd>Negros y Blancos: Patrimonio Cultural Inmaterial de la Humanidad desde 2009.</dd></div>
+    <div><dt>El barniz</dt><dd>Mopa-mopa: en la lista de salvaguardia urgente de la UNESCO desde 2020.</dd></div>
+    <div><dt>El agua</dt><dd>Páramos, La Cocha y el río Pasto.</dd></div>
+  </dl>
+  <aside class="notes">Recupera las respuestas de la pregunta semilla: esos lugares también son fuerzas territoriales.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Distopías" data-title="Pasto real en el nivel">
+  <figure class="s-split__img" data-img="c25-pasto-real" data-alt="Placa holográfica cian con un dato real sobre la Plaza de Nariño"></figure>
+  <div class="s-split__text">
+    <p class="led">Capa de información</p>
+    <h2>Seis placas de Pasto real</h2>
+    <p>En cada zona del nivel hay una placa cian con un dato verdadero y una línea que explica <b>por qué ese dato cambió el diseño</b>.</p>
+    <ul class="ticks ticks--tight">
+      <li><b>1537–2037:</b> los 500 años de la ciudad.</li>
+      <li><b>Negros y Blancos:</b> la tradición se vuelve mecánica.</li>
+      <li><b>Barniz de Pasto:</b> el oficio en riesgo es el tesoro.</li>
+      <li><b>San Juan Bautista:</b> lo antiguo como refugio.</li>
+      <li><b>Plaza de Nariño:</b> el nodo acumula historia.</li>
+      <li><b>El Galeras:</b> el hito que todos conocen.</li>
+    </ul>
+  </div>
+  <aside class="notes">Investigar es parte del diseño. Cada placa responde la misma pregunta: ¿qué cambió en el nivel porque este dato es real? Si el dato no cambia nada, es decorado. En el modo jugable las placas son opcionales y se coleccionan (contador "Pasto real").</aside>
+</section>
+
+<section class="slide s-mazo" data-zone="Distopías" data-title="Mazo del Mundo">
+  <h2>Mazo del Mundo</h2>
+  <div class="mazo">
+    <div class="mazo__card mazo__card--a"><span>Fuerza territorial</span><b>Volcán · Carnaval · Barniz · La Cocha · Páramo · Mercado</b></div>
+    <span class="mazo__x">×</span>
+    <div class="mazo__card mazo__card--b"><span>Tecnología</span><b>Implante de memoria · IA municipal · Máscara biométrica · Exoesqueleto</b></div>
+    <span class="mazo__x">×</span>
+    <div class="mazo__card mazo__card--c"><span>Pérdida</span><b>El rostro · El idioma · El cielo · El agua · El olvido</b></div>
+  </div>
+  <p class="big">Roben una carta de cada mazo. Pueden cambiar <b>una</b>, <b>una vez</b>. Cambiarla también es una decisión de diseño.</p>
+  <aside class="notes">Analogía: es como un parqués de ideas: el dado propone, ustedes deciden. El cambio único enseña costo y compromiso. Quien cambia pierde la sorpresa.</aside>
+</section>
+
+<section class="slide s-paper" data-zone="Distopías" data-title="Célula 0 · Constitución">
+  <div class="paper-sheet">
+    <p class="tag">Célula 0 · Constitución del Mundo</p>
+    <h2>Contrabando de Rostros</h2>
+    <div class="consti">
+      <div><b>Tres reglas</b><ol><li>Toda cámara pública identifica rostros en tiempo real.</li><li>Ocultar el rostro es delito, salvo con licencia.</li><li>El Carnaval se celebra con máscaras legales que llevan chip.</li></ol></div>
+      <div><b>Tecnología</b><p>"Ojo de Atriz", el reconocimiento facial municipal.</p><b>Costo humano</b><p>El anonimato.</p></div>
+      <div><b>Tres actores</b><p>La Alcaldía Biométrica · las cuadrillas de talco clandestino · los vendedores de máscaras legales.</p><b>Contradicción</b><p>La fiesta que celebra mezclarse y desaparecer es la que más vigila.</p></div>
+    </div>
+  </div>
+  <aside class="notes">Yo hago, en 3 minutos. Muestra cómo la contradicción ya produce imágenes: talco en el aire, cámaras ciegas, una máscara legal pisada en el suelo.</aside>
+</section>
+
+<section class="slide s-mission" data-zone="Distopías" data-title="Misión 3" data-timer="22">
+  <p class="led">Misión · Zona 3</p>
+  <h2>Constitución del Mundo</h2>
+  <ol class="mission-steps">
+    <li>Roben Fuerza × Tecnología × Pérdida.</li>
+    <li>Escriban 3 reglas irrompibles.</li>
+    <li>1 tecnología, 1 costo humano y 3 actores: quién controla, quién se beneficia, quién resiste.</li>
+    <li>Una contradicción central.</li>
+  </ol>
+  <p class="done"><b>Terminado cuando:</b> las reglas producen conflictos y escenas sin necesitar una explicación enciclopédica.</p>
+  <div class="timer" aria-live="polite"><span class="timer__t">22:00</span><span class="timer__hint">S para iniciar</span></div>
+  <aside class="notes">A los 17 minutos avisa: 5 minutos. Luego ronda de 5 minutos: cada célula lee su contradicción.</aside>
+</section>
+
+<section class="slide s-break" data-zone="Distopías" data-title="Refugio" data-timer="15">
+  <figure class="bg" data-img="c21-mercado-memorias" data-alt="Puestos del mercado del Potrerillo en 2037"></figure>
+  <div class="s-break__card"><p class="led">Refugio · 15 min</p><h2>Pausa</h2><p>Café, agua y ceniza. Volvemos cuando el reloj llegue a cero.</p><div class="timer" aria-live="polite"><span class="timer__t">15:00</span><span class="timer__hint">S para iniciar</span></div></div>
+  <aside class="notes">Pulsa S: el reloj de 15 minutos queda en pantalla y nadie pregunta a qué hora volvemos. Aprovecha para leer las constituciones y escoger cuál usar como ejemplo en la Zona 4.</aside>
+</section>
+
+<!-- ===================== ZONA 4 · ESPACIO ===================== -->
+<section class="slide s-zone s-zone--paper" id="espacio" data-zone="Espacio" data-title="Zona 4 · El espacio también escribe">
+  <figure class="bg" data-img="z4-espacio" data-alt="Vista aérea del nivel con el camino crítico y las zonas marcadas"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 4 · 10:00 · 50 min</p>
+    <h2>El espacio también escribe</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> que tu lugar cuente la historia antes de que alguien hable.</p>
+  </div>
+  <aside class="notes">El corazón del taller. 15 minutos de teoría y después a dibujar.</aside>
+</section>
+
+<section data-opcional class="slide s-split" data-zone="Espacio" data-title="Piranesi">
+  <figure class="s-split__img" data-img="c12-piranesi-pasto" data-alt="La catedral vista desde abajo: arquitectura que pesa"></figure>
+  <div class="s-split__text">
+    <p class="led">Antes de los videojuegos</p>
+    <h2>Piranesi: espacios imposibles</h2>
+    <p><b>Giovanni Battista Piranesi</b>, <i>Cárceles</i> (c. 1750–1761). Escaleras que no llevan a ninguna parte, puentes suspendidos, escala opresiva.</p>
+    <p class="big">Doscientos años antes que Doom, ya existía el diseño de niveles como emoción.</p>
+  </div>
+  <aside class="notes">Pregunta: ¿qué sientes en este espacio? (Vértigo, pequeñez, encierro.) Eso es intención espacial.</aside>
+</section>
+
+<section data-opcional class="slide s-split s-split--right" data-zone="Espacio" data-title="De Chirico y Escher">
+  <figure class="s-split__img" data-img="c13-plaza-metafisica" data-alt="Los portales de la plaza vacía con luces bajas"></figure>
+  <div class="s-split__text">
+    <h2>Plazas vacías, sombras largas</h2>
+    <p><b>Giorgio de Chirico</b>, pintura metafísica (década de 1910): arcadas, plazas desiertas y sombras que anticipan algo. Es el clima de <i>ICO</i>.</p>
+    <p><b>M. C. Escher</b>: arquitecturas imposibles que inspiraron juegos enteros como <i>Monument Valley</i> (2014).</p>
+  </div>
+  <aside class="notes">La sombra larga es una técnica de anticipación: ves que algo está ahí antes de verlo.</aside>
+</section>
+
+<section class="slide s-lynch" data-zone="Espacio" data-title="Kevin Lynch">
+  <header><p class="led">Kevin Lynch · La imagen de la ciudad · 1960</p><h2>Cómo leemos una ciudad</h2></header>
+  <dl class="lynch">
+    <div><dt>Sendas</dt><dd>Por donde nos movemos. <span>Las calles que todos usan para llegar al centro.</span></dd></div>
+    <div><dt>Bordes</dt><dd>Lo que separa. <span>El río Pasto.</span></dd></div>
+    <div><dt>Distritos</dt><dd>Zonas con carácter. <span>El centro histórico, el mercado.</span></dd></div>
+    <div><dt>Nodos</dt><dd>Donde nos encontramos. <span>La Plaza de Nariño.</span></dd></div>
+    <div><dt>Hitos</dt><dd>Lo que nos orienta. <span>La catedral. El Galeras.</span></dd></div>
+  </dl>
+  <p class="analogia"><b>Es como…</b> explicarle a alguien cómo llegar a tu casa: «pasando el parque, en la esquina de la iglesia».</p>
+  <aside class="notes">Pide ejemplos de Pasto para cada categoría. Esto es exactamente lo que hace un level designer con un mapa.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Espacio" data-title="El Galeras es un hito">
+  <figure class="s-split__img" data-img="c14-galeras-hito" data-alt="Una calle que termina en el volcán Galeras"></figure>
+  <div class="s-split__text">
+    <h2>El Galeras ya es un hito</h2>
+    <p>Walt Disney lo llamaba <b>weenie</b>: un imán visual que te hace caminar hacia él, como el castillo al final de la calle principal.</p>
+    <p><i>Journey</i> usa una montaña. Pasto tiene un volcán que se ve desde casi toda la ciudad.</p>
+    <p class="big">Tu nivel necesita algo que se vea desde lejos y prometa algo.</p>
+    <p class="analogia"><b>Es como…</b> la estrella polar: si la ves, no necesitas mapa.</p>
+  </div>
+  <aside class="notes">El hito orienta sin flechas ni carteles. En cine cumple la misma función: el plano de ubicación.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Espacio" data-title="Camino crítico">
+  <figure class="s-split__img" data-img="c15-camino-critico" data-alt="La Calle Real con el camino crítico marcado en naranja"></figure>
+  <div class="s-split__text">
+    <h2>Camino crítico y desvío</h2>
+    <ul class="ticks">
+      <li>El camino principal se lee <b>sin mapa</b>.</li>
+      <li>Todo cruce ofrece una ruta clara y una <b>recompensa opcional</b>.</li>
+      <li>La salida <b>se ve antes</b> de llegar a ella.</li>
+      <li>La luz y el color guían la mirada antes que cualquier letrero.</li>
+    </ul>
+    <p class="analogia"><b>Es como…</b> las migas de pan de Hansel y Gretel, pero hechas de luz.</p>
+  </div>
+  <aside class="notes">Prospect-refuge (Jay Appleton, 1975): nos sentimos seguros cuando vemos sin ser vistos. Por eso los balcones y las esquinas son tan cinematográficos.</aside>
+</section>
+
+<section class="slide s-pacing" data-zone="Espacio" data-title="Ritmo">
+  <h2>El ritmo se diseña</h2>
+  <div class="pacing">
+    <svg viewBox="0 0 1600 420" preserveAspectRatio="none" aria-hidden="true"><path d="M0 360 C 140 350 200 260 320 280 S 470 360 560 330 S 760 160 880 190 S 1000 300 1080 260 S 1240 40 1320 60 S 1480 330 1600 340"/></svg>
+    <ol class="pacing__labels"><li>Tensión</li><li>Alivio</li><li>Escalada</li><li>Clímax</li><li>Resolución</li></ol>
+  </div>
+  <p class="big">Un nivel, una escena y un concierto respiran igual. ¿Les suena esta curva?</p>
+  <aside class="notes">No reveles todavía que es la curva de esta mañana. Solo siembra la pregunta.</aside>
+</section>
+
+<section class="slide s-question" data-zone="Espacio" data-title="Narrativa ambiental">
+  <p class="led">Narrativa ambiental</p>
+  <p class="s-question__q">Un puesto con la lona rota, la mercancía en el piso y una máscara pisada. <em>¿Qué pasó aquí?</em></p>
+  <p class="analogia"><b>Es como…</b> llegar a una casa al día siguiente de una fiesta: nadie te cuenta, pero sabes qué pasó.</p>
+  <aside class="notes">Deja que inventen la historia. Ningún personaje habló: el espacio la contó.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Espacio" data-title="La planta de cámara">
+  <figure class="s-split__img s-split__img--contain" data-img="c16-planta-camara" data-alt="Planta de cámara: el plano de nivel con las posiciones de cámara"></figure>
+  <div class="s-split__text">
+    <p class="led">El puente</p>
+    <h2>La planta de cámara</h2>
+    <p>En cine existe un dibujo del set visto desde arriba, con las posiciones de cámara y los movimientos de los actores.</p>
+    <p class="big">Un mapa de nivel con cámaras dibujadas <em>es</em> una planta de rodaje.</p>
+    <p class="analogia"><b>Es como…</b> el plano de una casa antes de construirla, pero para la cámara.</p>
+  </div>
+  <aside class="notes">Aquí se unen las dos palabras de la mañana. El mismo papel sirve para jugar y para rodar.</aside>
+</section>
+
+<section class="slide s-legend" data-zone="Espacio" data-title="Leyenda del Plano de Nivel">
+  <h2>Leyenda del Plano de Nivel</h2>
+  <ul class="legend">
+    <li><i class="lg lg--star"></i><b>Acceso</b><span>1</span></li>
+    <li><i class="lg lg--red"></i><b>Pista</b><span>3</span></li>
+    <li><i class="lg lg--yellow"></i><b>Punto de presión</b><span>1</span></li>
+    <li><i class="lg lg--blue"></i><b>Decisión</b><span>1</span></li>
+    <li><i class="lg lg--green"></i><b>Salida transformada</b><span>1</span></li>
+    <li><i class="lg lg--wall"></i><b>Muro (marcador negro)</b><span>—</span></li>
+    <li><i class="lg lg--cam"></i><b>Cámara</b><span>6</span></li>
+    <li><i class="lg lg--sound"></i><b>Zona sonora (lápiz)</b><span>3</span></li>
+  </ul>
+  <p class="quiet">Además, un desvío lateral. Rellenen las celdas completas: el escáner las lee una por una.</p>
+  <aside class="notes">Muestra la plantilla A3 real y las 4 marcas negras de las esquinas: el escáner las necesita.</aside>
+</section>
+
+<section class="slide s-plan" data-zone="Espacio" data-title="Célula 0 · Plano">
+  <p class="tag">Célula 0 · Plano de Nivel</p>
+  <div class="plan" data-plan></div>
+  <aside class="notes">Yo hago: dibuja el tuyo en vivo bajo la cámara del celular, proyectado. Este es el plano de la Célula 0: el mismo nivel que se recorre y se juega en la web principal.</aside>
+</section>
+
+<section class="slide s-escenas" data-zone="Espacio" data-title="El nivel como guion">
+  <p class="led">Level design + guion</p>
+  <h2>Cada zona es una escena</h2>
+  <ol class="escenas">
+    <li><figure data-img="e1-potrerillo" data-alt="El pasillo del mercado El Potrerillo con rótulos y lonas"></figure><b>EXT. POTRERILLO · NOCHE</b><span>Acceso: el nivel te enseña a mirar.</span></li>
+    <li><figure data-img="e2-calle-real" data-alt="La Calle Real con el arco escáner al fondo"></figure><b>EXT. CALLE REAL · NOCHE</b><span>Presión: el arco escanea rostros.</span></li>
+    <li><figure data-img="e3-san-juan" data-alt="La fachada de San Juan Bautista con el altar de velas"></figure><b>EXT. SAN JUAN BAUTISTA · NOCHE</b><span>Desvío: la ruta sin cámaras.</span></li>
+    <li><figure data-img="e4-plaza" data-alt="La Plaza de Nariño con guirnaldas, kioscos y la estatua"></figure><b>EXT. PLAZA DE NARIÑO · NOCHE</b><span>Nodo: todas las rutas se cruzan.</span></li>
+    <li><figure data-img="e5-avenida" data-alt="La avenida que termina en la puerta del páramo y el Galeras"></figure><b>EXT. AVENIDA AL PÁRAMO · NOCHE</b><span>Salida: el Galeras al fondo.</span></li>
+  </ol>
+  <p class="escenas__pie">En un guion, cada escena empieza con un encabezado: interior o exterior, lugar y momento. En el juego, ese mismo encabezado aparece al entrar a cada zona.</p>
+  <aside class="notes">Esta slide une las dos palabras del taller. Lee los cinco encabezados en voz alta, como si fuera un guion. Luego pregunta: ¿cuál sería el encabezado de cada zona de su plano? Que lo escriban al lado de cada zona del A3.</aside>
+</section>
+
+<section class="slide s-grid s-prin16" data-zone="Espacio" data-title="16 principios en un nivel">
+  <h2>Un nivel, 16 principios</h2>
+  <div class="grid4">
+    <div><b>Hito</b><span>El Galeras orienta sin flechas.</span></div>
+    <div><b>Migas de pan</b><span>Las guirnaldas llevan a la plaza.</span></div>
+    <div><b>Pista</b><span>Talco escondido bajo la mesa.</span></div>
+    <div><b>Vida de fondo</b><span>El cuy mensajero espera su envío.</span></div>
+    <div><b>Información anticipada</b><span>Doña Rosario avisa del arco.</span></div>
+    <div><b>Telegrafiar</b><span>El aviso oficial antes del escáner.</span></div>
+    <div><b>Punto de presión</b><span>El arco de la Calle Real.</span></div>
+    <div><b>Desvío y recompensa</b><span>El callejón de San Juan.</span></div>
+    <div><b>Recompensa por explorar</b><span>El altar de máscaras.</span></div>
+    <div><b>Secreto</b><span>La máscara de barniz.</span></div>
+    <div><b>Nodo</b><span>La Plaza de Nariño.</span></div>
+    <div><b>Orientación en el nodo</b><span>El tótem «usted está aquí».</span></div>
+    <div><b>Revelación</b><span>El holograma explica el sistema.</span></div>
+    <div><b>Identidad del lugar</b><span>El asadero de cuy.</span></div>
+    <div><b>Decisión significativa</b><span>Pintarse o la máscara legal.</span></div>
+    <div><b>Salida transformada</b><span>La puerta del páramo.</span></div>
+  </div>
+  <aside class="notes">No los expliques uno por uno: es un mapa. Señala tres (hito, punto de presión y decisión) y di que los demás los van a descubrir jugando el nivel en la web. Su plano de hoy necesita, como mínimo, hito, 3 pistas, presión, decisión y salida.</aside>
+</section>
+
+<section class="slide s-mission" data-zone="Espacio" data-title="Misión 4" data-timer="31">
+  <p class="led">Misión · Zona 4</p>
+  <h2>Plano de Nivel</h2>
+  <ol class="mission-steps">
+    <li>Escojan un lugar de Pasto 2037 y dibujen los muros con marcador.</li>
+    <li>Pongan los stickers: acceso, 3 pistas, presión, decisión, salida y un desvío.</li>
+    <li>Dibujen 6 triángulos de cámara numerados.</li>
+    <li>Marquen 3 zonas sonoras con lápiz.</li>
+  </ol>
+  <p class="done"><b>Terminado cuando:</b> un extraño puede señalar la salida en 3 segundos.</p>
+  <div class="timer" aria-live="polite"><span class="timer__t">31:00</span><span class="timer__hint">S para iniciar</span></div>
+  <aside class="notes">Rotación de roles: quien dirigía ahora dibuja. Pasa por las mesas preguntando: ¿dónde está tu hito?</aside>
+</section>
+
+<!-- ===================== ZONA 5 · NIEBLA ===================== -->
+<section class="slide s-zone s-zone--fog" id="niebla" data-zone="Niebla" data-title="Zona 5 · Niebla de guerra">
+  <figure class="bg" data-img="z5-niebla" data-alt="El callejón de San Juan Bautista en penumbra, con velas al fondo"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 5 · 10:50 · 30 min</p>
+    <h2>Niebla de guerra</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> descubrir qué entiende otro de tu nivel sin que tú lo expliques.</p>
+  </div>
+  <aside class="notes">El pico de tensión de la mañana. Ritmo rápido y voz firme.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Niebla" data-title="Protocolo de playtest">
+  <figure class="s-split__img" data-img="c17-niebla-postits" data-alt="Playtest sobre el plano: el rastro del jugador y sus dudas"></figure>
+  <div class="s-split__text">
+    <h2>Protocolo de playtest</h2>
+    <ol class="steps">
+      <li><b>Antes:</b> tapen las salas con post-its y escriban qué debería entender quien juegue.</li>
+      <li><b>Durante:</b> una persona mueve la ficha; un autor levanta los post-its y lee las pistas. Los demás observan en silencio.</li>
+      <li><b>Después:</b> separen observación, interpretación e hipótesis.</li>
+      <li><b>Iterar:</b> un único cambio.</li>
+    </ol>
+    <p class="analogia"><b>Es como…</b> el ensayo general de una obra: el público ve lo que el director ya no ve.</p>
+  </div>
+  <aside class="notes">El Director de Juego solo revela lo que la ficha alcanza a ver. Nada más.</aside>
+</section>
+
+<section class="slide s-statement" data-zone="Niebla" data-title="Si tienes que explicarlo">
+  <p class="s-statement__text">Si tienes que explicarlo, el nivel <em>todavía no funciona</em>.</p>
+  <aside class="notes">Lo mismo vale para una escena: el público no tiene al director al lado.</aside>
+</section>
+
+<section data-opcional class="slide s-ui" data-zone="Niebla" data-title="La interfaz">
+  <figure class="s-ui__img" data-img="c23-interfaz" data-alt="Vista en primera persona de la Plaza de Nariño, con el asadero de cuy, la avenida y la carroza">
+    <div class="ui-slug"><b>EXT. PLAZA DE NARIÑO · NOCHE</b><span>Nodo · todas las rutas se cruzan aquí</span></div>
+    <div class="ui-mark" style="left:24%;top:38%"><b>Hablar con el asadero</b><i></i><span>Pulsa E</span></div>
+    <div class="ui-mark ui-mark--verde" style="left:50.5%;top:49%"><b>Puerta del páramo</b><i></i><span>62 m</span></div>
+    <div class="ui-mark ui-mark--azul" style="left:91%;top:40%"><b>Decide aquí</b><i></i><span>9 m</span></div>
+  </figure>
+  <div class="s-ui__text">
+    <p class="led">Niebla de guerra · Interfaz</p>
+    <h2>Primero el mundo, después la etiqueta</h2>
+    <ol class="ui-orden">
+      <li><b>Mundo:</b> luz, forma y sonido. La cortina roja dice «cerrado» sin palabras.</li>
+      <li><b>Etiqueta:</b> solo sobre lo que se puede tocar, con su distancia.</li>
+      <li><b>Texto:</b> el último recurso. Corto, y siempre con su porqué.</li>
+    </ol>
+  </div>
+  <aside class="notes">Esta es la lección del playtest aplicada a la interfaz. Si el jugador necesita una etiqueta, primero pregúntate si el mundo podía decirlo solo. El encabezado de escena arriba es cine dentro del juego: el mismo formato del guion. En la hoja de playtest, cuenten cuántas veces la persona tuvo que preguntar "¿y ahora qué?": cada pregunta es una etiqueta que falta o un mundo que no se lee.</aside>
+</section>
+
+<section class="slide s-table" data-zone="Niebla" data-title="Observación e interpretación">
+  <h2>Observar no es opinar</h2>
+  <div class="otable">
+    <div class="otable__h">Observación</div><div class="otable__h">Interpretación</div><div class="otable__h">Hipótesis</div>
+    <div>Se detuvo 20 segundos frente a la lona azul.</div><div>No entendió la pista.</div><div>Si la pista brilla más, la verá.</div>
+    <div>Tomó el desvío dos veces.</div><div>El camino principal no se lee.</div><div>Si la salida se ve desde el acceso, irá directo.</div>
+    <div>Se rio en la decisión.</div><div>La decisión no pesa.</div><div>Si cuesta algo, la tomará en serio.</div>
+  </div>
+  <aside class="notes">Pide que cada célula escriba una fila de cada tipo.</aside>
+</section>
+
+<section class="slide s-anecdota" data-zone="Niebla" data-title="Desde el estudio">
+  <p class="led">Desde el estudio</p>
+  <h2>Un playtest que cambió una decisión</h2>
+  <ol class="tres-pasos">
+    <li><b>Creíamos</b><span>lo que el equipo daba por obvio</span></li>
+    <li><b>Vimos</b><span>lo que hizo de verdad quien jugó</span></li>
+    <li><b>Cambiamos</b><span>una sola cosa, por esa evidencia</span></li>
+  </ol>
+  <p class="quiet">En un estudio, la opinión más fuerte no gana: gana la observación.</p>
+  <aside class="notes">4 minutos. Tu momento de autoridad. Cuenta un caso real en tres tiempos, siguiendo la slide: qué creían, qué vieron en el playtest y qué cambiaron. Prepáralo antes (Raptor Heist, Dungeons &amp; Dragons u Orcs Must Die!).</aside>
+</section>
+
+<section class="slide s-mission" data-zone="Niebla" data-title="Misión 5" data-timer="12">
+  <p class="led">Misión · Zona 5</p>
+  <h2>Partida cruzada</h2>
+  <ol class="mission-steps">
+    <li>4 min: preparen la niebla y su declaración.</li>
+    <li>12 min: otra célula juega su mapa. Ustedes callan y anotan.</li>
+    <li>10 min: un único cambio y queda la versión 2.</li>
+  </ol>
+  <p class="done"><b>Terminado cuando:</b> pueden justificar su cambio con una observación concreta.</p>
+  <div class="timer" aria-live="polite"><span class="timer__t">12:00</span><span class="timer__hint">S para iniciar</span></div>
+  <aside class="notes">Al terminar el único cambio, que retiren los post-its: fotografía los 3 planos (versión 2) con el celular. Los escaneas mientras ruedan en la Zona 6. No los muestres hasta el estreno.</aside>
+</section>
+
+<!-- ===================== ZONA 6 · VERTICAL SLICE ===================== -->
+<section class="slide s-zone s-zone--orange" id="vertical" data-zone="Vertical slice" data-title="Zona 6 · Vertical slice">
+  <figure class="bg" data-img="z6-vertical" data-alt="Toma de cine en 2.39:1 en la Plaza de Nariño"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 6 · 11:20 · 45 min</p>
+    <h2>Del prototipo al plano</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> 30 a 45 segundos que demuestren la promesa de su mundo.</p>
+  </div>
+  <aside class="notes">Energía de rodaje. La persona de Producción manda el tiempo.</aside>
+</section>
+
+<section data-opcional class="slide s-split" data-zone="Vertical slice" data-title="La Jetée">
+  <figure class="s-split__img s-split__img--bw" data-img="c18-fotosecuencia" data-alt="La estatua de Nariño en una fotografía fija"></figure>
+  <div class="s-split__text">
+    <p class="led">Chris Marker · 1962</p>
+    <h2>La Jetée</h2>
+    <p>Una película de ciencia ficción de 28 minutos hecha casi solo con fotografías fijas. Inspiró <i>12 monos</i> (1995).</p>
+    <p class="big">Una fotosecuencia <em>es</em> cine.</p>
+  </div>
+  <aside class="notes">Si puedes, muestra 1 minuto. Libera a quien cree que necesita una cámara profesional.</aside>
+</section>
+
+<section class="slide s-statement" data-zone="Vertical slice" data-title="Vertical slice">
+  <p class="led">Vertical slice</p>
+  <p class="s-statement__text">La mínima pieza que demuestra la <em>promesa completa</em>.</p>
+  <p class="analogia"><b>Es como…</b> una tajada de torta: un pedazo, pero con todas las capas.</p>
+  <aside class="notes">En un estudio, el vertical slice es una porción del juego con calidad final: un nivel, no todos. Aquí es un instante que concentra mundo, espacio y decisión.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Vertical slice" data-title="Producción virtual">
+  <figure class="s-split__img" data-img="c29-set" data-alt="Vista aérea del nivel con el camino crítico y las zonas marcadas"></figure>
+  <div class="s-split__text">
+    <p class="led">La parte técnica</p>
+    <h2>El motor es el set</h2>
+    <p>Desde <i>The Mandalorian</i> (2019), muchos rodajes usan motores de videojuego para generar fondos y escenarios en tiempo real, y para previsualizar planos antes de rodar.</p>
+    <p class="big">El nivel Galeras 2037 de la web es un set: se recorre, se juega y se filma con lentes de 24, 35 y 85 mm.</p>
+    <p class="quiet">Hoy lo harán con papel y celular. El método es el mismo.</p>
+    <p class="analogia"><b>Es como…</b> un set de teatro que cambia de escenografía con un clic.</p>
+  </div>
+  <aside class="notes">Demo en vivo de 3 minutos: abre la web y pulsa Jugar el nivel. Muestra, en este orden: las etiquetas flotantes, el encabezado de escena al entrar a la Calle Real, una placa cian de Pasto real, la tecla C para cambiar de lente y la F para tomar planos. Al terminar, el informe de playtest trae el storyboard: es el mismo formato de la Zona 6.</aside>
+</section>
+
+
+<section class="slide s-planos" data-zone="Vertical slice" data-title="Tipos de plano">
+  <p class="led">Cine · El lenguaje de la cámara</p>
+  <h2>Tipos de plano</h2>
+  <ul class="planos">
+    <li><figure data-img="t-general" data-alt="La Plaza de Nariño vista desde lo alto"></figure><b>Plano general</b><span>Dónde estamos.</span></li>
+    <li><figure data-img="t-medio" data-alt="Doña Rosario en su puesto de la Calle Real"></figure><b>Plano medio</b><span>Quién y qué hace.</span></li>
+    <li><figure data-img="t-primer" data-alt="El rostro de la carroza, de cerca"></figure><b>Primer plano</b><span>Qué siente.</span></li>
+    <li><figure data-img="t-detalle" data-alt="El talco escondido bajo la mesa"></figure><b>Plano detalle</b><span>La pista.</span></li>
+    <li><figure data-img="t-cenital" data-alt="La plaza vista desde arriba, como un plano"></figure><b>Cenital</b><span>El mapa, el sistema.</span></li>
+    <li><figure data-img="t-contrapicado" data-alt="La torre de la catedral vista desde abajo"></figure><b>Contrapicado</b><span>El poder.</span></li>
+    <li><figure data-img="t-pov" data-alt="La Calle Real a la altura de los ojos"></figure><b>POV</b><span>Ser el jugador.</span></li>
+    <li><figure data-img="t-inserto" data-alt="La cortina roja de la puerta del páramo"></figure><b>Inserto</b><span>La consecuencia.</span></li>
+  </ul>
+  <aside class="notes">Todos estos fotogramas salen del mismo nivel: la cámara cambia, el lugar no. Cada cámara del plano A3 tiene que corresponder a uno de estos tipos. El cenital puede ser el propio mapa de papel. En el nivel jugable, el juego reconoce tres: general, detalle y contrapicado.</aside>
+</section>
+
+<section class="slide s-split s-split--right" data-zone="Vertical slice" data-title="Luz de celofán">
+  <figure class="s-split__img" data-img="c19-celofan" data-alt="Bombillos y tiras de color en un puesto del mercado"></figure>
+  <div class="s-split__text">
+    <h2>Dirección de arte con $5.000</h2>
+    <ul class="ticks">
+      <li><b>Celofán naranja</b> sobre la linterna: luz de sodio, de calle.</li>
+      <li><b>Celofán cian</b>: luz de pantalla, de vigilancia.</li>
+      <li><b>Cartón negro</b> como bandera para cortar la luz.</li>
+      <li><b>Papel arrugado y aluminio</b>: ceniza, metal, ruina.</li>
+      <li>Contraluz siempre que puedan.</li>
+    </ul>
+  </div>
+  <aside class="notes">Haz una demo de 30 segundos: misma figura, luz blanca versus celofán naranja con contraluz.</aside>
+</section>
+
+<section class="slide s-split" data-zone="Vertical slice" data-title="Luz práctica">
+  <figure class="s-split__img" data-img="c24-luz-practica" data-alt="Guirnaldas de bombillos cruzando la Calle Real de noche"></figure>
+  <div class="s-split__text">
+    <p class="led">Cine · Luz</p>
+    <h2>Luz práctica</h2>
+    <p class="big">La luz que se ve dentro del cuadro: bombillos, velas, pantallas, brasas.</p>
+    <p>Justifica de dónde viene la luz y guía la mirada. En el nivel, las guirnaldas son migas de pan: si las sigues, llegas a la plaza.</p>
+    <ul class="ticks">
+      <li>Linterna del celular dentro de un vaso: un farol.</li>
+      <li>Otra pantalla en brillo máximo: un monitor de vigilancia.</li>
+      <li>Una vela LED detrás de la figura: contraluz.</li>
+    </ul>
+  </div>
+  <aside class="notes">Complementa la demo del celofán. Regla para el microteaser: cada plano debe tener al menos una luz práctica visible. Es lo más barato que existe para que una maqueta de papel parezca cine.</aside>
+</section>
+
+<section class="slide s-formats" data-zone="Vertical slice" data-title="Formatos">
+  <h2>Escojan su formato</h2>
+  <div class="formats">
+    <div><b>A · Cine de papel</b><span>Stop-motion o fotosecuencia sobre su propio mapa, con figuras recortadas.</span></div>
+    <div><b>B · Acción real</b><span>Microescena en el salón o el pasillo, con el mapa como plan de bloqueo.</span></div>
+    <div><b>C · Animatic</b><span>Las viñetas fotografiadas, más voz en off y foley.</span></div>
+  </div>
+  <p class="quiet">Bonus: entren por QR a su nivel 3D y graben con la cámara virtual.</p>
+  <aside class="notes">Cualquiera de los tres vale lo mismo. El criterio es la claridad de la promesa, no el acabado.</aside>
+</section>
+
+<section class="slide s-list" data-zone="Vertical slice" data-title="Sonido">
+  <h2>El sonido es la mitad</h2>
+  <ul class="rules">
+    <li><b>Ambiente:</b> el mundo respira (lluvia de ceniza, mercado, sirena lejana).</li>
+    <li><b>Foley:</b> los objetos existen (pasos, lona, talco).</li>
+    <li><b>Voz:</b> una sola frase puede bastar.</li>
+  </ul>
+  <p class="big">El público perdona una mala imagen. No perdona un mal sonido.</p>
+  <aside class="notes">Graben sonido en un celular distinto, cerca de la fuente. Modo avión para evitar interferencias.</aside>
+</section>
+
+<section class="slide s-mission" data-zone="Vertical slice" data-title="Misión 6" data-timer="24">
+  <p class="led">Misión · Zona 6</p>
+  <h2>Microteaser</h2>
+  <ol class="mission-steps">
+    <li>10 min: storyboard de 6 viñetas, una por cámara del mapa.</li>
+    <li>24 min: rodaje en formato A, B o C.</li>
+    <li>8 min: montaje en CapCut. De 30 a 45 segundos.</li>
+    <li>Envíen el video a la laptop del tallerista.</li>
+  </ol>
+  <p class="done"><b>Terminado cuando:</b> la pieza muestra la identidad del mundo sin necesitar el cortometraje completo.</p>
+  <div class="timer" aria-live="polite"><span class="timer__t">24:00</span><span class="timer__hint">S para iniciar</span></div>
+  <aside class="notes">Mientras ruedan: escanea en /escaner las 3 fotos de la Zona 5 (unos 3 minutos por plano). Plan B: si una célula no tiene celular, filmas tú su mapa y ellos narran en vivo durante el estreno.</aside>
+</section>
+
+<!-- ===================== ZONA 7 · ESTRENO ===================== -->
+<section class="slide s-zone s-zone--yellow" id="estreno" data-zone="Estreno" data-title="Zona 7 · Estreno">
+  <figure class="bg" data-img="z7-estreno" data-alt="La puerta del páramo con su chakana de luz y el Galeras al fondo"></figure>
+  <div class="s-zone__card">
+    <p class="led">Zona 7 · 12:05 · 25 min</p>
+    <h2>Estreno</h2>
+    <p class="s-zone__mission"><b>Objetivo de misión:</b> que el público entienda la promesa, el territorio y el siguiente paso.</p>
+  </div>
+  <aside class="notes">Luces apagadas. Cada célula tiene unos 7 minutos.</aside>
+</section>
+
+<section class="slide s-list" data-zone="Estreno" data-title="Orden de estreno">
+  <h2>Orden de estreno</h2>
+  <ol class="steps steps--big">
+    <li>Se proyecta el microteaser.</li>
+    <li>Revelación: su mapa de papel se levanta como mundo 3D.</li>
+    <li>Pitch de 2 minutos.</li>
+    <li>Crítica: conservar, iterar, siguiente medio.</li>
+  </ol>
+  <aside class="notes">La revelación 3D es la sorpresa. Abre /escaner, elige la célula (la escaneaste durante el rodaje), pulsa Abrir el guardado y Levantar en 3D y deja que los muros suban del papel. Luego Recorrer: camina despacio buscando sus pistas y su hito.</aside>
+</section>
+
+<section class="slide s-list" data-zone="Estreno" data-title="Pitch">
+  <h2>Pitch en 2 minutos</h2>
+  <ol class="pitch">
+    <li><b>El mundo</b> en una frase.</li>
+    <li><b>La experiencia:</b> sentir, descubrir, decidir.</li>
+    <li><b>La decisión</b> central y su consecuencia.</li>
+    <li><b>Por qué solo puede pasar en Pasto.</b></li>
+    <li><b>El siguiente medio:</b> corto, videojuego, cómic, instalación o XR.</li>
+  </ol>
+  <aside class="notes">Cronometra en serio. Dos minutos es una disciplina de industria.</aside>
+</section>
+
+<section class="slide s-critica" data-zone="Estreno" data-title="Crítica">
+  <h2>Crítica de estudio</h2>
+  <div class="critica">
+    <div class="critica__c critica__c--keep"><b>Conservar</b><span>Lo que ya funciona y no se toca.</span></div>
+    <div class="critica__c critica__c--iter"><b>Iterar</b><span>Una sola cosa que cambiaría la lectura.</span></div>
+    <div class="critica__c critica__c--next"><b>Siguiente medio</b><span>¿Dónde quiere vivir este mundo?</span></div>
+  </div>
+  <p class="quiet">Criterios: experiencia · coherencia sistémica · narrativa espacial · decisión y consecuencia · territorialidad · factibilidad.</p>
+  <aside class="notes">Observación antes que opinión. Nadie dice "me gustó": se dice "vi que…".</aside>
+</section>
+
+<section class="slide s-reveal" data-zone="Estreno" data-title="La curva de esta mañana">
+  <p class="led">La revelación</p>
+  <h2>Esta mañana fue un nivel</h2>
+  <div class="reveal-curve" data-curve></div>
+  <p class="big">Entraron por un acceso, aprendieron en un tutorial, escalaron, llegaron al pico y hoy estrenan. Ustedes lo jugaron.</p>
+  <aside class="notes">Deja que la curva se dibuje. Señala la Zona 5: ese fue el jefe final.</aside>
+</section>
+
+<section class="slide s-cierre" data-zone="Estreno" data-title="Cierre">
+  <figure class="bg" data-img="p00-portada" data-alt="Pasto en 2037 al anochecer, con el Galeras humeante al fondo"></figure>
+  <div class="s-cierre__card">
+    <p class="s-cierre__q">GALERAS 2037 no enseña a hacer un videojuego. Enseña a diseñar lo que ocurre <em>entre los planos</em>.</p>
+    <div class="s-cierre__row">
+      <div class="qr" aria-label="Código QR del sitio"><span>QR del sitio</span></div>
+      <p>Las slides, el nivel jugable, el escáner, el kit y el archivo profundo quedan en la web:<span class="qr__url" data-site-url></span><b>Andrés Ordóñez-Bolaños</b> · ordonezoswaldo.com</p>
+    </div>
+  </div>
+  <aside class="notes">Foto grupal de evacuación. Gracias. Recuerda pedir los videos que falten por WhatsApp.</aside>
+</section>
+
+<!-- ===================== ARCHIVO PROFUNDO ===================== -->
+<section class="slide s-zone s-zone--archive archivo" id="archivo" data-zone="Archivo" data-title="Archivo profundo">
+  <figure class="bg" data-img="c20-la-cocha-seca" data-alt="El páramo y la ciudad a lo lejos"></figure>
+  <div class="s-zone__card">
+    <p class="led">Archivo profundo</p>
+    <h2>Para seguir después del taller</h2>
+    <p class="s-zone__mission">Conceptos, lecturas, juegos y películas para quien quiera llevar su mundo más lejos.</p>
+  </div>
+</section>
+
+<section class="slide s-grid archivo" data-zone="Archivo" data-title="Las cuatro formas de jugar">
+  <h2>Las cuatro formas de jugar</h2>
+  <p class="big">Roger Caillois, <i>Los juegos y los hombres</i>, 1958.</p>
+  <div class="grid2">
+    <div><b>Agon · competencia</b><span>Ganar con habilidad. Un duelo, una carrera, un juicio en el cine.</span></div>
+    <div><b>Alea · azar</b><span>Entregarse a la suerte. El dado, la ruleta, el destino.</span></div>
+    <div><b>Mimicry · simulacro</b><span>Ser otro. El disfraz, el carnaval, la actuación.</span></div>
+    <div><b>Ilinx · vértigo</b><span>Perder el equilibrio a propósito. La montaña rusa, la persecución.</span></div>
+  </div>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="MDA">
+  <h2>Mecánicas, dinámicas, estéticas</h2>
+  <p class="big">Hunicke, LeBlanc y Zubek, 2004. Quien diseña construye de la mecánica hacia la emoción; quien juega lo vive al revés.</p>
+  <dl class="defs">
+    <div><dt>Mecánicas</dt><dd>Las reglas y acciones posibles.</dd></div>
+    <div><dt>Dinámicas</dt><dd>Lo que pasa cuando esas reglas se ponen en marcha con personas.</dd></div>
+    <div><dt>Estéticas</dt><dd>Lo que se siente: descubrimiento, tensión, fantasía, comunidad.</dd></div>
+  </dl>
+  <p class="quiet">El cine trabaja parecido: el montaje (mecánica) produce ritmo (dinámica) y emoción (estética).</p>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Disonancia ludonarrativa">
+  <h2>Disonancia ludonarrativa</h2>
+  <p class="big">Clint Hocking acuña el término en 2007, a propósito de BioShock: lo que el juego te hace hacer contradice lo que la historia dice.</p>
+  <p>En cine pasa algo parecido cuando la puesta en escena contradice el diálogo. A veces es un error y a veces es la idea.</p>
+  <p class="quiet">Pregunta para tu mundo: ¿la mecánica dice lo mismo que el tema?</p>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Checklist del nivel">
+  <h2>Checklist de lectura del nivel</h2>
+  <ul class="checks">
+    <li>La salida se ve en 3 segundos desde la entrada a cada zona.</li>
+    <li>El camino principal está más iluminado que los desvíos.</li>
+    <li>No hay callejones sin salida que parezcan salidas.</li>
+    <li>Las recompensas opcionales se ven desde el punto de decisión.</li>
+    <li>Cada zona cuenta algo con objetos, sin texto.</li>
+    <li>Hay un hito visible desde casi todo el nivel.</li>
+  </ul>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Rodar con celular">
+  <h2>Rodar con celular</h2>
+  <ul class="checks">
+    <li>Horizontal, siempre. Limpien el lente.</li>
+    <li>Bloqueen exposición y foco (mantengan el dedo en la pantalla).</li>
+    <li>24 o 30 cuadros por segundo; que no cambie entre tomas.</li>
+    <li>Modo avión: sin notificaciones ni interferencias.</li>
+    <li>Sonido en otro celular, cerca de la fuente.</li>
+    <li>Graben 3 segundos antes y 3 después de cada acción.</li>
+  </ul>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Ruta de 30 días">
+  <h2>Ruta de 30 días</h2>
+  <ol class="steps">
+    <li><b>Semana 1:</b> reescriban la Constitución del Mundo con lo que aprendieron en el playtest.</li>
+    <li><b>Semana 2:</b> dibujen dos niveles más del mismo mundo y pruébenlos con tres personas.</li>
+    <li><b>Semana 3:</b> produzcan un vertical slice mejor: un minuto, con sonido trabajado.</li>
+    <li><b>Semana 4:</b> decidan el medio y armen un pitch de una página.</li>
+  </ol>
+</section>
+
+<section class="slide s-biblio archivo" data-zone="Archivo" data-title="Bibliografía">
+  <h2>Para leer</h2>
+  <ul class="biblio">
+    <li>Johan Huizinga, <i>Homo Ludens</i> (1938)</li>
+    <li>Roger Caillois, <i>Los juegos y los hombres</i> (1958)</li>
+    <li>Kevin Lynch, <i>La imagen de la ciudad</i> (1960)</li>
+    <li>Bernard Suits, <i>The Grasshopper</i> (1978)</li>
+    <li>Jean Baudrillard, <i>Simulacros y simulación</i> (1981)</li>
+    <li>Donna Haraway, <i>Manifiesto cyborg</i> (1985)</li>
+    <li>Pierre Lévy, <i>¿Qué es lo virtual?</i> (1995)</li>
+    <li>Jesse Schell, <i>The Art of Game Design</i> (2008)</li>
+    <li>Byung-Chul Han, <i>Psicopolítica</i> (2014)</li>
+    <li>Michel Foucault, <i>Vigilar y castigar</i> (1975)</li>
+    <li>Aldous Huxley, <i>Un mundo feliz</i> (1932)</li>
+    <li>William Gibson, <i>Neuromante</i> (1984)</li>
+  </ul>
+</section>
+
+<section class="slide s-biblio archivo" data-zone="Archivo" data-title="Ludofilmografía">
+  <h2>Para jugar y para ver</h2>
+  <div class="biblio2">
+    <ul class="biblio"><li class="biblio__h">Juegos</li><li>Super Mario Bros. (1985)</li><li>Half-Life 2 (2004)</li><li>ICO (2001)</li><li>BioShock (2007)</li><li>Journey (2012)</li><li>Inside (2016)</li><li>Death Stranding (2019)</li><li>Raptor Heist, en Fortnite (2025)</li></ul>
+    <ul class="biblio"><li class="biblio__h">Películas</li><li>Metropolis (1927)</li><li>La Jetée (1962)</li><li>Stalker (1979)</li><li>Blade Runner (1982)</li><li>Brazil (1985)</li><li>Ghost in the Shell (1995)</li><li>Children of Men (2006)</li><li>Sleep Dealer (2008)</li></ul>
+  </div>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Glosario">
+  <h2>Glosario de bolsillo</h2>
+  <dl class="glosario">
+    <div><dt>Verbo</dt><dd>La acción central de quien juega.</dd></div>
+    <div><dt>Mecánica</dt><dd>Una regla que se puede usar.</dd></div>
+    <div><dt>Bucle</dt><dd>Lo que se repite y produce sentido.</dd></div>
+    <div><dt>Nivel</dt><dd>Un espacio diseñado para una experiencia.</dd></div>
+    <div><dt>Camino crítico</dt><dd>La ruta mínima para terminar.</dd></div>
+    <div><dt>Hito</dt><dd>Lo que orienta desde lejos.</dd></div>
+    <div><dt>Pista</dt><dd>Información que el espacio entrega.</dd></div>
+    <div><dt>Playtest</dt><dd>Probar con otros y observar.</dd></div>
+    <div><dt>Vertical slice</dt><dd>La pieza mínima con calidad final.</dd></div>
+    <div><dt>Plano</dt><dd>Mapa. Y también toma.</dd></div>
+    <div><dt>Storyboard</dt><dd>La película dibujada antes de rodarla.</dd></div>
+    <div><dt>Pitch</dt><dd>La promesa contada en minutos.</dd></div>
+  </dl>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Ética de representación">
+  <h2>Imaginar Pasto con cuidado</h2>
+  <ul class="rules">
+    <li>¿Nuestro mundo usa el territorio como adorno o como sistema?</li>
+    <li>¿A quién representa la distopía como víctima, y a quién como responsable?</li>
+    <li>¿Estamos usando tradiciones vivas (el Carnaval, el barniz) con respeto por quienes las sostienen?</li>
+    <li>¿Qué futuro deseable deja ver nuestra advertencia?</li>
+  </ul>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Pasto real: fichas">
+  <h2>Pasto real: las seis fichas del nivel</h2>
+  <dl class="verbs verbs--wide verbs--fichas">
+    <div><dt>1537–2037</dt><dd>Según la fecha más citada, Pasto fue fundada en 1537 (hay quien propone 1539). En 2037 cumplirá 500 años.</dd></div>
+    <div><dt>Negros y Blancos</dt><dd>Del 2 al 7 de enero; el 5 es el Día de Negros y el 6 el de Blancos. Patrimonio Cultural Inmaterial de la Humanidad (UNESCO, 2009).</dd></div>
+    <div><dt>Barniz de Pasto</dt><dd>Resina de mopa-mopa, de la selva del Putumayo, cocinada, amasada y estirada a mano. Salvaguardia urgente de la UNESCO desde 2020.</dd></div>
+    <div><dt>San Juan Bautista</dt><dd>Templo junto a la plaza central, donde la tradición sitúa la fundación. La ciudad lleva el nombre del mismo santo.</dd></div>
+    <div><dt>Plaza de Nariño</dt><dd>Lleva el nombre de Antonio Nariño, capturado en Pasto en 1814; durante la Independencia la ciudad fue realista.</dd></div>
+    <div><dt>Volcán Galeras</dt><dd>Unos 4.276 m, a pocos kilómetros del centro. Uno de los volcanes más activos de Colombia, vigilado día y noche.</dd></div>
+  </dl>
+  <p class="quiet">Para profundizar: Servicio Geológico Colombiano (Galeras), UNESCO (Carnaval y barniz) y la Academia Nariñense de Historia.</p>
+</section>
+
+<section class="slide s-list archivo" data-zone="Archivo" data-title="Sobre las imágenes">
+  <h2>Sobre las imágenes</h2>
+  <p class="big">Las imágenes de estas slides son renders en tiempo real del nivel 3D Galeras 2037, construido para el taller. La portada es una ilustración generada con IA a partir de un prompt del tallerista.</p>
+  <p>Son ilustraciones de resultados posibles, no un nivel técnico obligatorio. La IA asiste; la autoría decide.</p>
+</section>
+
+</div>
+
+<!-- Interfaz del proyector -->
+<div class="hud" id="hud">
+  <div class="hud__zone led" id="hud-zone">Transmisión</div>
+  <div class="hud__curve" aria-hidden="true"><svg viewBox="0 0 1000 40" preserveAspectRatio="none"><path id="hud-path" d=""/><circle id="hud-dot" r="4"/></svg></div>
+  <div class="hud__count led" id="hud-count">1 / 1</div>
+  <nav class="hud__nav" aria-label="Navegación de slides">
+    <button type="button" id="prev" aria-label="Slide anterior"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+    <button type="button" id="next" aria-label="Slide siguiente"><svg viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4"/></svg></button>
+    <button type="button" id="menu" aria-label="Índice y ayuda"><svg viewBox="0 0 24 24"><path d="M4 6h16M4 12h16M4 18h16" fill="none" stroke="currentColor" stroke-width="2.2"/></svg></button>
+  </nav>
+</div>
+
+<div class="panel" id="panel" hidden>
+  <div class="panel__inner">
+    <header class="panel__head"><h2>Índice</h2><button type="button" id="panel-close" class="tarp-plate tarp-plate--paper">Cerrar</button></header>
+    <ol class="panel__list" id="panel-list"></ol>
+    <div class="panel__help">
+      <p><kbd>←</kbd> <kbd>→</kbd> navegar · <kbd>F</kbd> pantalla completa · <kbd>N</kbd> notas · <kbd>P</kbd> ventana de presentador · <kbd>S</kbd> temporizador · <kbd>A</kbd> archivo profundo · <kbd>L</kbd> modo lectura · <kbd>I</kbd> índice</p>
+      <p><a href="../">Volver al sitio</a></p>
+    </div>
+  </div>
+</div>
+
+<div class="notes-panel" id="notes-panel" hidden></div>
+
+<script type="module" src="../assets/js/slides.js"></script>
+</body>
+</html>

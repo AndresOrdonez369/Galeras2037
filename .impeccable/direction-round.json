@@ -1,0 +1,121 @@
+{
+  "title": "Galeras 2037: elige el mundo visual",
+  "question": "La tirada asignó \"Rótulo y Lona\". Quédatela, toma una alternativa o vuelve a tirar.",
+  "options": [
+    {
+      "id": "assigned",
+      "label": "Rótulo y Lona: Potrerillo 2037",
+      "kicker": "THE ROLL",
+      "lineage": "Rotulación popular colombiana + lonas del mercado bajo ceniza",
+      "thesis": "Cyberpunk del Sur: Pasto 2037 vista desde su mercado, con rótulos pintados a mano, lonas y pantallas LED piratas bajo la ceniza del Galeras.",
+      "palette": ["#1E1D1B", "#D9D3C4", "#1F5FA8", "#F26B1D", "#F2C230", "#C8261E"],
+      "materials": ["rótulo pintado a mano sobre zinc", "lona de polietileno decolorada", "matriz LED pirata", "polvo de ceniza"],
+      "viewport": "Escena 3D a pantalla completa: calle de mercado nocturna con lonas que se mecen, el Galeras encendido al fondo como hito, y GALERAS 2037 pintado como rótulo gigante colgado en la escena. Un ticker LED transmite. Al hacer scroll, la ciudad se aplana hasta su plano de papel.",
+      "risk": "Si los rótulos se pintan con timidez o como disfraz, se lee como folclor kitsch o estética de la pobreza.",
+      "raised": [
+        { "from": "challenger-deco-lobby", "raise": "Cada zona del taller es un umbral con su propio estado de llegada (mercado, callejón, azotea, sala de estreno)." },
+        { "from": "challenger-phosphor", "raise": "Los estados del sistema se imprimen como transmisiones en el ticker LED, no como chrome de interfaz." },
+        { "from": "challenger-ink-basin", "raise": "Cada control lleva su nombre físico o de cine real: lente 35 mm, densidad de ceniza, altura de cámara." },
+        { "from": "challenger-provenance", "raise": "Una sola línea continua, la curva de tensión del taller, atraviesa la página desde la llegada hasta el estreno." }
+      ]
+    },
+    {
+      "id": "model-pick",
+      "label": "Armazón de Carroza: Taller del Carnaval",
+      "kicker": "IMPECCABLE’S PICK",
+      "lineage": "Talleres de carrozas del Carnaval de Negros y Blancos",
+      "thesis": "El armazón de alambre de la carroza es el plano; la figura monumental pintada es el mundo. Negro y blanco como dualidad distópica.",
+      "palette": ["#111111", "#F4F1EA", "#6E7378", "#E4002B", "#00A651", "#FFD100"],
+      "materials": ["armazón de varilla y alambre", "papel maché", "talco y carbón", "pintura de carroza"],
+      "viewport": "Una figura monumental cyborg con cabeza de volcán gira en 3D: mitad armazón desnudo, mitad pintada. El título se monta como letras de carroza.",
+      "risk": "El Carnaval es la referencia más obvia de Pasto y puede volverse festivo en lugar de distópico."
+    },
+    {
+      "id": "challenger-paper",
+      "label": "Menagerie de papel",
+      "verdict": "competitive",
+      "lineage": "Autómatas de papel con manivela",
+      "thesis": "El papel del taller se levanta en pop-up: el mapa cuadriculado se pliega y se vuelve la ciudad.",
+      "palette": ["#C8B28A", "#F7F4EE", "#2A2A2A", "#B3122E"],
+      "materials": ["papel blanco cortado", "cartón kraft", "sombra al carbón"],
+      "viewport": "El mapa A3 sobre kraft: al girar la manivela (scroll), muros de papel se levantan con sombra proyectada; un solo pliegue carmesí marca la pieza que se está volviendo mundo.",
+      "case": "Es el más claro sobre el mecanismo plano→mundo, pero pierde el registro distópico que fijaste.",
+      "risk": "Se lee artesanal y amable, no cyberpunk."
+    },
+    {
+      "id": "challenger-hoarding",
+      "label": "Muro de carteles",
+      "verdict": "competitive",
+      "lineage": "Carteles pegados del festival sobre carteles viejos",
+      "thesis": "Pasto 2037 como un muro de carteles pegados unos sobre otros, con grano de risografía y una sola palabra gigante que gana.",
+      "palette": ["#F3EDE0", "#111111", "#FF6A00", "#EE1F8A", "#7B57F0"],
+      "materials": ["serigrafía", "grano riso", "borde rasgado", "stickers"],
+      "viewport": "Collage a sangre de carteles del FICPA y del Carnaval; GALERAS con un color distinto por letra; un panel blanco limpio con la información del taller.",
+      "case": "El público se reconoce en el muro del festival, pero se aplana a 2D y no muestra el paso a 3D.",
+      "risk": "Se vuelve fiesta en lugar de distopía y tiende a ser plano."
+    },
+    {
+      "id": "challenger-deco-lobby",
+      "label": "Lobby de cine Art Déco",
+      "verdict": "declined",
+      "lineage": "Vestíbulo de cine en noche de estreno",
+      "thesis": "La web como vestíbulo de estreno con marquesinas de latón.",
+      "palette": ["#0E0B08", "#C9A45C", "#8E1B24"],
+      "materials": ["latón", "laca ébano", "terciopelo"],
+      "viewport": "Marquesina en abanico con el título en niveles escalonados.",
+      "case": "Habla de cine, pero no de Pasto ni del futuro.",
+      "kept": "Llegada por umbrales escalonados.",
+      "risk": "Nostalgia sin territorio."
+    },
+    {
+      "id": "challenger-phosphor",
+      "label": "Terminal de fósforo",
+      "verdict": "declined",
+      "lineage": "Terminal verde en sala de máquinas",
+      "thesis": "Todo como transcripción en una terminal.",
+      "palette": ["#050805", "#33FF66", "#0F3D1E"],
+      "materials": ["vidrio curvo", "scanlines"],
+      "viewport": "Transcripción de 80 columnas.",
+      "case": "Es justo el cyberpunk genérico de neón que todos los modelos producen.",
+      "kept": "Los estados se imprimen solos.",
+      "risk": "Cliché de categoría."
+    },
+    {
+      "id": "challenger-ink-basin",
+      "label": "Cubeta de tinta",
+      "verdict": "declined",
+      "lineage": "Suminagashi con simulación de fluidos",
+      "thesis": "La página como superficie líquida.",
+      "palette": ["#F5F5F0", "#1B2A4A", "#3A3A3A"],
+      "materials": ["tinta sumi", "agua"],
+      "viewport": "Cubeta de tinta que responde al dedo.",
+      "case": "Bellísimo, pero ajeno al territorio y al taller.",
+      "kept": "Controles con nombres físicos honestos.",
+      "risk": "Desconectado del brief."
+    },
+    {
+      "id": "challenger-provenance",
+      "label": "Cinta de procedencia",
+      "verdict": "declined",
+      "lineage": "Curaduría de museo",
+      "thesis": "Una cinta roja que cuenta la vida de un objeto.",
+      "palette": ["#EDE3CF", "#B0201E", "#8A8A8A"],
+      "materials": ["seda", "sellos de archivo"],
+      "viewport": "Una cinta que guía una columna.",
+      "case": "Archivo, no futuro.",
+      "kept": "Una línea continua que guía todo el recorrido.",
+      "risk": "Burocrático."
+    }
+  ],
+  "reroll": { "registers": ["safer", "bolder"] },
+  "canon": true,
+  "canonCard": {
+    "label": "Cyberpunk estándar",
+    "thesis": "La ciudad nocturna de neón, ejecutada impecablemente.",
+    "palette": ["#07060B", "#FF2E88", "#00E5FF", "#E8E8F0"],
+    "materials": ["neón", "lluvia", "cromo"],
+    "viewport": "Skyline nocturno con neón magenta y cian, y el título con glow.",
+    "risk": "Indistinguible de cualquier otro cyberpunk; Pasto desaparece."
+  },
+  "steer": true
+}

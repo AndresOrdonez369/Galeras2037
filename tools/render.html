@@ -1,0 +1,133 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <title>Galeras 2037 · renders del nivel</title>
+  <link rel="stylesheet" href="../assets/css/base.css">
+  <style>
+    body { margin: 0; overflow: auto; background: #111; color: #eee; font: 14px/1.4 system-ui; }
+    #c { display: block; position: absolute; left: 0; top: 0; }
+    #log { position: fixed; right: 8px; top: 8px; z-index: 2; width: 360px; max-height: 90vh; overflow: auto; background: #000c; padding: 10px; white-space: pre-wrap; }
+  </style>
+  <script type="importmap">{ "imports": { "three": "../vendor/three/three.module.min.js", "three/addons/": "../vendor/three/addons/" } }</script>
+</head>
+<body>
+<canvas id="c"></canvas>
+<pre id="log">Herramienta interna: renderiza las imágenes de las slides desde el nivel 3D.
+Necesita el servidor con GALERAS_DEV=1.
+</pre>
+<script type="module">
+import { createMarket } from '../assets/js/market.js';
+import { planCanvas } from '../assets/js/world/plan.js';
+import { CHAPTERS } from '../assets/js/level.js';
+
+const log = m => { document.getElementById('log').textContent += m + '\n'; };
+const cam = id => CHAPTERS.find(c => c.id === id).cam;
+const chP = (id, f = 0.3) => { const i = CHAPTERS.findIndex(c => c.id === id); const n = CHAPTERS[i + 1] ? CHAPTERS[i + 1].p : 1; return CHAPTERS[i].p + (n - CHAPTERS[i].p) * f; };
+const T169 = [960, 540], W169 = [1920, 1080], P34 = [1200, 1600], P45 = [1280, 1600], L21 = [1920, 960], SQ = [720, 720];
+
+const SHOTS = [
+  // retrato del guía del juego (Cuy Express) para el cuadro de diálogo
+  { n: 'g-cuy', s: SQ, pos: [-2.2, 2.85, -1.45], look: [-6.2, 2.62, -2.25], fov: 26, t: 3, fly: false },
+  { n: 'hero-fallback', s: W169, ...cam('llegada') },
+  { n: 'z1-transmision', s: W169, pos: [-78, 1.8, 2], look: [-110, 6, -12], fov: 56 },
+  { n: 'z2-experiencia', s: W169, ...cam('acceso') },
+  { n: 'z3-distopias', s: W169, pos: [-98, 1.5, -6], look: [-110.4, 22, -27.6], fov: 52 },
+  { n: 'z4-espacio', s: W169, pos: [-48, 52, 42], look: [-110, 0, -6], fov: 52, design: 1, fly: false },
+  { n: 'z5-niebla', s: W169, pos: [-46, 1.7, 20.4], look: [-62, 2.2, 22.5], fov: 54 },
+  { n: 'z6-vertical', s: W169, ...cam('toma'), bars: true },
+  { n: 'z7-estreno', s: W169, ...cam('salida') },
+  { n: 'c01-plano-plano', s: P45, plan: true, zoom: 1.18, cx: 0.47, cy: 0.2 },
+  { n: 'c02-estudio-aaa', s: P34, pos: [-20, 30, -24], look: [-75, 0, 0], fov: 56, design: 1, fly: false },
+  { n: 'c03-arcade-mercado', s: L21, pos: [2, 1.9, -2.2], look: [-10, 2.2, 6], fov: 52 },
+  { n: 'c04-circulo-magico', s: P34, pos: [-93, 2.2, 9], look: [-100, 5.2, 2], fov: 58 },
+  { n: 'c05-celula0-rostro', s: P45, pos: [-101, 4.2, -11.5], look: [-113, 6.8, -13], fov: 52 },
+  { n: 'c06-utopia-distopia', s: P34, pos: [-215, 3, 12], look: [-150, 6, 0], fov: 50 },
+  { n: 'c07-panoptico', s: L21, pos: [-95, 2.8, 4], look: [-110.4, 19, -27.6], fov: 50 },
+  { n: 'c08-cyberpunk-sur', s: P34, pos: [-3, 2.1, 1.6], look: [-26, 4.8, -2], fov: 56 },
+  { n: 'c09-transhumano-mopa', s: P34, pos: [4, 2.6, -1.4], look: [-6, 4.6, 5.5], fov: 54 },
+  { n: 'c10-caverna', s: L21, pos: [-47, 1.6, 20.6], look: [-62, 1.4, 23], fov: 48 },
+  { n: 'c11-buen-vivir', s: P34, pos: [-184, 1.7, -7], look: [-420, 60, 0], fov: 56 },
+  { n: 'c12-piranesi-pasto', s: P34, pos: [-90, 1.3, -14], look: [-110, 24, -28], fov: 64 },
+  { n: 'c13-plaza-metafisica', s: P34, pos: [-79, 1.6, 23.2], look: [-124, 2.6, 22.4], fov: 50, t: 9, fly: false },
+  { n: 'c14-galeras-hito', s: P34, ...cam('salida') },
+  { n: 'c15-camino-critico', s: P34, pos: [-28, 2.1, 0.6], look: [-62, 0.8, 0], fov: 56, design: 1 },
+  { n: 'c16-planta-camara', s: P34, plan: true, zoom: 1.35, cx: 0.47, cy: 0.25 },
+  { n: 'c17-niebla-postits', s: P34, tour: chP('playtest', 0.62) },
+  { n: 'c18-fotosecuencia', s: P34, pos: [-90, 1.6, 10], look: [-100, 5.6, 2], fov: 50, t: 9, fly: false },
+  { n: 'c19-celofan', s: P34, pos: [9, 1.5, -2.2], look: [0, 2.3, 4.6], fov: 50 },
+  { n: 'c20-la-cocha-seca', s: W169, pos: [-215, 6, 30], look: [-120, 4, -5], fov: 52 },
+  { n: 'c22-cuy-gigante', s: P34, pos: [14, 2, -1], look: [-20, 30, 9.6], fov: 58, t: 6 },
+  { n: 'c23-interfaz', s: W169, pos: [-104, 1.68, 10], look: [-122, 2.2, 4], fov: 62, t: 12 },
+  { n: 'c24-luz-practica', s: P34, pos: [-43, 2.7, -1.8], look: [-64, 5.6, 0.8], fov: 54, t: 8 },
+  { n: 'c25-pasto-real', s: P34, pos: [-87.5, 2.1, -12.5], look: [-84, 1.7, -21.7], fov: 52, t: 8 },
+  { n: 'c26-kuleshov', s: P34, pos: [-47, 1.7, 1.2], look: [-58, 3.4, -0.4], fov: 40, t: 14 },
+  { n: 'c27-suspenso', s: P34, pos: [-82, 1.7, 16], look: [-98, 4, -12], fov: 56, t: 12.6 },
+  { n: 'c28-cine', s: W169, pos: [-50.5, 1.7, 20.8], look: [-61, 3.6, 27.5], fov: 42, t: 9, bars: true },
+  { n: 'c29-set', s: P34, pos: [-72, 24, 28], look: [-104, 0, -6], fov: 46, design: 1, fly: false, t: 9 },
+  { n: 't-general', s: T169, pos: [-78, 9, 22], look: [-108, 1, -8], fov: 60, t: 9, fly: false },
+  { n: 't-medio', s: T169, pos: [-39.4, 1.7, -0.6], look: [-42.6, 1.1, -2.6], fov: 42, t: 9, fly: false },
+  { n: 't-primer', s: T169, pos: [-104.5, 6.4, -11.2], look: [-113, 6.9, -13], fov: 30, t: 9, fly: false },
+  { n: 't-detalle', s: T169, pos: [-19.9, 1.1, 1.85], look: [-21, 0.32, 3.05], fov: 36, t: 9, fly: false },
+  { n: 't-cenital', s: T169, pos: [-100, 72, 0.6], look: [-100, 0, 0], fov: 46, t: 9, fly: false },
+  { n: 't-contrapicado', s: T169, pos: [-95, 0.7, -13], look: [-100, 24, -30], fov: 56, t: 9, fly: false },
+  { n: 't-pov', s: T169, pos: [-38.5, 1.68, 0], look: [-58, 1.9, 0], fov: 70, t: 9, fly: false },
+  { n: 't-inserto', s: T169, pos: [-163.4, 1.8, -6.3], look: [-163.4, 1.7, -8.8], fov: 44, t: 9, fly: false },
+  { n: 'e1-potrerillo', s: P45, ...cam('acceso'), t: 9 },
+  { n: 'e2-calle-real', s: P45, ...cam('presion'), t: 9 },
+  { n: 'e3-san-juan', s: P45, ...cam('desvio'), t: 9 },
+  { n: 'e4-plaza', s: P45, pos: [-84, 4, -6], look: [-104, 2, 14], fov: 60, t: 9 },
+  { n: 'e5-avenida', s: P45, ...cam('salida'), t: 9 },
+  { n: 'c21-mercado-memorias', s: W169, pos: [-12, 2.4, 2.6], look: [-32, 3.4, -2], fov: 54, t: 40, fly: false },
+];
+
+const cv = document.getElementById('c');
+function size([w, h]) { cv.style.width = w + 'px'; cv.style.height = h + 'px'; }
+size(W169);
+const market = await createMarket(cv, { pixelRatio: 1 });
+const out = document.createElement('canvas');
+const ctx = out.getContext('2d');
+
+async function save(name) {
+  const res = await fetch('/__guardar?nombre=' + name, { method: 'POST', body: out.toDataURL('image/jpeg', 0.88) });
+  log(`${res.ok ? '✓' : '✗'} ${name}.jpg`);
+}
+
+async function renderShot(sh) {
+  const [w, h] = sh.s; out.width = w; out.height = h;
+  if (sh.plan) {
+    const pc = await planCanvas();
+    // recorte centrado en la Plaza de Nariño y la Calle Real
+    const z = sh.zoom || 1, cw = pc.height * (w / h) / z, chh = pc.height / z;
+    const cx = pc.width * (sh.cx || 0.42) - cw / 2, cy = (pc.height - chh) * (sh.cy ?? 0.5);
+    ctx.fillStyle = '#ede8dc'; ctx.fillRect(0, 0, w, h);
+    ctx.drawImage(pc, Math.max(0, cx), Math.max(0, cy), cw, chh, 0, 0, w, h);
+    return save(sh.n);
+  }
+  size(sh.s); market.resize();
+  if (sh.tour !== undefined) { market.shot(null); market.jump(sh.tour); market.renderOnce(80); }
+  else { market.shot({ pos: sh.pos, look: sh.look, fov: sh.fov, design: sh.design || 0, t: sh.t, fly: sh.fly, gate: sh.gate }); market.renderOnce(50); }
+  market.renderOnce(1);
+  ctx.drawImage(cv, 0, 0, w, h);
+  if (sh.bars) {
+    const bh = Math.round((h - w / 2.39) / 2);
+    ctx.fillStyle = '#000'; ctx.fillRect(0, 0, w, bh); ctx.fillRect(0, h - bh, w, bh);
+    ctx.font = '900 30px Doto, monospace'; ctx.fillStyle = '#d8d2c4'; ctx.textBaseline = 'middle';
+    ctx.fillStyle = '#ff4a3a'; ctx.beginPath(); ctx.arc(60, bh / 2, 9, 0, 7); ctx.fill();
+    ctx.fillStyle = '#d8d2c4'; ctx.fillText('REC  PLANO 1 · 35 MM · 2.39:1', 80, bh / 2);
+    ctx.fillText('CÉLULA 0 · PLAZA DE NARIÑO · TOMA 3', 50, h - bh / 2);
+  }
+  return save(sh.n);
+}
+
+window.renderAll = async (only) => {
+  for (const sh of SHOTS) { if (only && !only.includes(sh.n)) continue; await renderShot(sh); }
+  log('listo');
+  window.renderDone = true;
+};
+log('escena lista');
+window.sceneReady = true;
+if (new URLSearchParams(location.search).has('auto')) renderAll();
+</script>
+</body>
+</html>

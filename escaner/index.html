@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Escáner de planos · Galeras 2037</title>
+<meta name="description" content="Del plano de papel al mundo jugable: fotografía tu Plano de Nivel A3 y levántalo en 3D.">
+<meta name="theme-color" content="#141312">
+<link rel="preload" href="../assets/fonts/bungee-latin-400-normal.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/escaner.css">
+<script type="importmap">{ "imports": { "three": "../vendor/three/three.module.min.js" } }</script>
+</head>
+<body>
+<header class="esc-top">
+  <a class="esc-top__marca" href="../">GALERAS <span>2037</span></a>
+  <ol class="esc-pasos" aria-label="Pasos">
+    <li data-paso="foto" class="is-on"><b>1</b>Foto</li>
+    <li data-paso="esquinas"><b>2</b>Esquinas</li>
+    <li data-paso="plano"><b>3</b>Plano</li>
+    <li data-paso="mundo"><b>4</b>Mundo 3D</li>
+  </ol>
+</header>
+
+<main>
+  <!-- 1 · Foto -->
+  <section class="esc-paso" id="paso-foto">
+    <div class="esc-intro">
+      <p class="esc-k">Escáner de planos · Del plano al mundo jugable</p>
+      <h1>Tu plano de papel,<br>levantado en 3D</h1>
+      <p class="esc-lead">Fotografía el Plano de Nivel A3 desde arriba, con las 4 marcas negras de las esquinas a la vista. El escáner lee muros y stickers y levanta el nivel para recorrerlo.</p>
+      <div class="esc-form">
+        <label class="esc-campo"><span>Célula</span>
+          <select id="celula"><option value="1">Célula 1</option><option value="2">Célula 2</option><option value="3">Célula 3</option><option value="4">Célula 4</option></select>
+        </label>
+        <label class="esc-campo esc-campo--grow"><span>Lugar de Pasto</span><input id="lugar" type="text" maxlength="40" placeholder="Ej.: Plaza del Carnaval"></label>
+      </div>
+      <div class="esc-acciones">
+        <label class="tarp-plate esc-file">Tomar foto<input id="foto-cam" type="file" accept="image/*" capture="environment"></label>
+        <label class="tarp-plate tarp-plate--paper esc-file">Subir imagen<input id="foto-file" type="file" accept="image/*"></label>
+        <button type="button" class="tarp-plate tarp-plate--blue" id="sin-foto">Dibujar sin foto</button>
+        <button type="button" class="tarp-plate tarp-plate--paper" id="abrir-guardado" hidden>Abrir el guardado</button>
+      </div>
+      <ul class="esc-tips">
+        <li><b>Luz pareja</b>, sin sombras de la mano ni del celular sobre el papel.</li>
+        <li><b>Desde arriba</b>: el plano debe llenar casi toda la foto.</li>
+        <li><b>Las 4 marcas</b> negras de las esquinas tienen que verse completas.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- 2 · Esquinas -->
+  <section class="esc-paso" id="paso-esquinas" hidden>
+    <div class="esc-barra">
+      <p class="esc-instr" id="instr-esquina">Toca la marca negra de <b>arriba a la izquierda</b></p>
+      <div class="esc-barra__acc">
+        <button type="button" class="tarp-plate tarp-plate--paper" id="rehacer">Rehacer</button>
+        <button type="button" class="tarp-plate" id="leer" disabled>Leer el plano</button>
+      </div>
+    </div>
+    <div class="esc-lienzo" id="lienzo-esq"><canvas id="c-esq"></canvas></div>
+  </section>
+
+  <!-- 3 · Plano -->
+  <section class="esc-paso" id="paso-plano" hidden>
+    <div class="esc-editor">
+      <div class="esc-lienzo esc-lienzo--plano" id="lienzo-plano"><canvas id="c-plano"></canvas></div>
+      <aside class="esc-panel">
+        <p class="esc-k">Corrige tocando las celdas</p>
+        <div class="esc-herr" id="herramientas" role="radiogroup" aria-label="Herramienta"></div>
+        <label class="esc-check"><input type="checkbox" id="ver-foto" checked> Ver la foto debajo</label>
+        <h2>Lectura de diseño</h2>
+        <ul class="esc-cuenta" id="cuenta"></ul>
+        <p class="esc-veredicto" id="veredicto"></p>
+        <div class="esc-acciones">
+          <button type="button" class="tarp-plate" id="levantar">Levantar en 3D</button>
+          <button type="button" class="tarp-plate tarp-plate--paper" id="volver-esq">Volver a las esquinas</button>
+        </div>
+      </aside>
+    </div>
+  </section>
+
+  <!-- 4 · Mundo 3D -->
+  <section class="esc-paso esc-mundo" id="paso-mundo" hidden>
+    <canvas id="c-3d"></canvas>
+    <div class="esc-slug" id="slug"><b id="slug-t">EXT. LUGAR · NOCHE</b><span id="slug-r">Célula 1 · del plano al mundo jugable</span></div>
+    <nav class="esc-modos" aria-label="Cámara">
+      <button type="button" data-modo="revelar" aria-pressed="true">Revelar</button>
+      <button type="button" data-modo="orbita" aria-pressed="false">Órbita</button>
+      <button type="button" data-modo="recorrer" aria-pressed="false">Recorrer</button>
+      <button type="button" data-modo="plano" aria-pressed="false">Plano</button>
+      <button type="button" id="captura">Captura</button>
+      <button type="button" id="volver-plano">Editar</button>
+    </nav>
+    <p class="esc-ayuda" id="ayuda-mundo">W A S D o flechas para caminar · arrastra para mirar</p>
+    <div class="esc-pad" id="pad" aria-hidden="true"><button type="button" data-mv="1">▲</button><button type="button" data-mv="-1">▼</button></div>
+  </section>
+</main>
+<script type="module" src="../assets/js/escaner.js"></script>
+</body>
+</html>
